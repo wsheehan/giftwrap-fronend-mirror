@@ -4,8 +4,5 @@ import attr from 'ember-data/attr';
 
 export default Model.extend({
 	title: attr('string'),
-	body: attr('string'),
-	updatedTitle: Ember.computed('title', function() {
-		return `${this.get('title')}`;
-	})
+	body: attr('string')
 });
