@@ -1,0 +1,72 @@
+{{outlet}}
+
+<h3>New Campaign</h3>
+
+<div id="campaign-create">
+	<div>{{input value=title id=title-input}}</div>
+	<div>{{textarea value=body id=body-input}}</div>
+	<div id="title-input-preview"></div>
+</div>
+
+<div id="campaign-preview">
+	<div id="email-from">Polly Antol<span id="title-preview">(Title)</span></div>
+	<div id="body-wrap">
+		<div id="school-logo"><img src="http://i.imgur.com/XuiyFbO.png" height="75" width="75"></div>
+		<div id="greeting">Dear Class of 1957</div>
+		<div id="body-preview">(Body) Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+		<div id="signoff">Sincerly, Polly Antol</div>
+		<div id="button-wrapper"><span id="give-button">Give Today</span></div>
+	</div>
+</div>
+
+<style type="text/css">
+	@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+	#campaign-create {
+		width: 40vw;
+		border: 1px dotted black;
+		display: inline-block;
+	}
+	#campaign-preview {
+		width: 50vw;
+		border: 1px dotted black;
+		display: inline-block;
+		padding: 20px;
+		font-family: 'Open Sans';
+	}
+	#email-from {
+		border: 1px solid gray;
+		border-radius: 2px;
+		padding: 3px;
+		display: inline-block;
+	}
+	#email-from #title-preview {
+		margin-left: 20px;
+	}
+	#body-wrap {
+		border: 1px solid gray;
+		border-radius: 4px;
+		margin-top: 25px;
+		padding: 15px;
+		font-size: 1.2em;
+	}
+	#school-logo {
+		text-align: center;
+	}
+	#body-preview {
+		margin: 10px 0px 20px 0px;
+		padding: 5px;
+		text-indent: 20px;
+	}
+	#signoff {
+		text-align: right;
+	}
+	#button-wrapper {
+		text-align: center;
+	}
+	#give-button {
+		padding: 5px;
+		border-radius: 2px;
+		background-color: gray;
+		color: black;
+	}
+</style>
