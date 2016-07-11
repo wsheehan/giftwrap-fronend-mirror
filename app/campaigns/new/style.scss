@@ -1,0 +1,51 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+#campaign-create {
+	width: 40vw;
+	border: 1px dotted black;
+	display: inline-block;
+}
+
+#campaign-preview {
+	width: 50vw;
+	border: 1px dotted black;
+	display: inline-block;
+	padding: 20px;
+	font-family: 'Open Sans';
+	#email-from {
+		border: 1px solid gray;
+		border-radius: 2px;
+		padding: 3px;
+		display: inline-block;
+		#title-preview {
+			margin-left: 20px;
+		}
+	}
+	#body-wrap {
+		border: 1px solid gray;
+		border-radius: 4px;
+		margin-top: 25px;
+		padding: 15px;
+		font-size: 1.2em;
+	}
+	#school-logo {
+		text-align: center;
+	}
+	#body-preview {
+		margin: 10px 0px 20px 0px;
+		padding: 5px;
+		text-indent: 20px;
+	}
+	#signoff {
+		text-align: right;
+	}
+	#button-wrapper {
+		text-align: center;
+	}
+	#give-button {
+		padding: 5px;
+		border-radius: 2px;
+		background-color: gray;
+		color: black;
+	}
+}
