@@ -2,19 +2,26 @@
 
 <h3>New Campaign</h3>
 
-<div id="campaign-create">
-	<div>{{input value=title id=title-input}}</div>
-	<div>{{textarea value=body id=body-input}}</div>
-	<div id="title-input-preview"></div>
-</div>
-
-<div id="campaign-preview">
-	<div id="email-from">Polly Antol<span id="title-preview">(Title)</span></div>
-	<div id="body-wrap">
-		<div id="school-logo"><img src="http://i.imgur.com/XuiyFbO.png" height="75" width="75"></div>
-		<div id="greeting">Dear Class of 1957</div>
-		<div id="body-preview">(Body) Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-		<div id="signoff">Sincerly, Polly Antol</div>
-		<div id="button-wrapper"><span id="give-button">Give Today</span></div>
+<div class="flex-container">
+	<div id="campaign-create">
+		<div>
+			<label>Title</label>
+			{{input value=newCampaign.title}}
+		</div>
+		<div>
+			<label>Body</label>
+			{{textarea value=newCampaign.body}}
+		</div>
+		<button {{ action "createCampaign" newCampaign }}>Send Campaign</button>
+	</div>
+	<div id="campaign-preview">
+		<div id="email-from">Polly Antol:<span id="title-preview">{{if newCampaign.title newCampaign.title "(Title)" }}</span></div>
+		<div id="body-wrap">
+			<div id="school-logo"><img src="http://i.imgur.com/XuiyFbO.png" height="75" width="75"></div>
+			<div id="greeting">Dear Class of 1957</div>
+			<div id="body-preview">{{ newCampaign.body }}</div>
+			<div id="signoff">Sincerly, Polly Antol</div>
+			<div id="button-wrapper"><span id="give-button">Give Now</span></div>
+		</div>
 	</div>
 </div>

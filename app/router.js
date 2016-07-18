@@ -13,6 +13,7 @@ Router.map(function() {
 
   this.route('campaigns', function() {
     this.route('new');
+    this.route('show', { path: "/:campaign_id"})
   });
 });
 
