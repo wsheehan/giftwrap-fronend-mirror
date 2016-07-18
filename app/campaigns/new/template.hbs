@@ -2,12 +2,6 @@
 
 <h3>New Campaign</h3>
 
-<div>
-	{{#each model as |donor-list|}}
-		<p>{{donor-list.title}}</p>
-	{{/each}}
-</div>
-
 <div class="flex-container">
 	<div id="campaign-create">
 		<div>
@@ -31,9 +25,3 @@
 		</div>
 	</div>
 </div>
-
-{{!-- {{input value=newCampaign.title}}
-{{input value=newCampaign.body}}
-<button {{ action "createCampaign" newCampaign }}>Send Campaign</button>
-
-{{newCampaign.title}} --}}
