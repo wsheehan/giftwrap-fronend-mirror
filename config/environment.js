@@ -45,5 +45,21 @@ module.exports = function(environment) {
     ENV.APP.API_URL = 'https://give-staging.herokuapp.com'
   }
 
+  ENV['ember-simple-auth'] = {
+    authorizer: 'authorizer:token'
+  };
+
+  ENV['ember-simple-auth-token'] = {
+    serverTokenEndpoint: ENV.APP.API_URL + '/users/authentication',
+    tokenPropertyName: 'token',
+    authorizationPrefix: 'Bearer ',
+    authorizationHeaderName: 'Authorization',
+    headers: {},
+    //refreshAccessTokens: true,
+    //serverTokenRefreshEndpoint: '/users/authentication/refresh',
+    tokenExpireName: 'exp'
+    //refreshLeeway: 0
+  };
+
   return ENV;
 };
