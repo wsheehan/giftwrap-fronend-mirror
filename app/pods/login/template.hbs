@@ -1,0 +1,11 @@
+{{outlet}}
+
+<div id="login-error"></div>
+
+<form {{action 'authenticate' on='submit'}} id="login-form">
+  <label for="email">Login</label>
+  {{input id='email' placeholder='Enter Email' value=identification}}
+  <label for="password">Password</label>
+  {{input id='password' placeholder='Enter Password' type='password' value=password}}
+  <button type="submit" class="btn btn-success">Login</button>
+</form>
