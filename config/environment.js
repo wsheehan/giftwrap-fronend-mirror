@@ -51,14 +51,6 @@ module.exports = function(environment) {
 
   ENV['ember-simple-auth-token'] = {
     serverTokenEndpoint: ENV.APP.API_URL + '/users/authentication',
-    tokenPropertyName: 'token',
-    authorizationPrefix: 'Bearer ',
-    authorizationHeaderName: 'Authorization',
-    headers: {},
-    //refreshAccessTokens: true,
-    //serverTokenRefreshEndpoint: '/users/authentication/refresh',
-    tokenExpireName: 'exp'
-    //refreshLeeway: 0
   };
 
   return ENV;

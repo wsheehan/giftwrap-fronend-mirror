@@ -2,6 +2,7 @@
 	<div id="user-links">
 	  {{#if session.isAuthenticated}}
 	    <a {{ action "invalidateSession" }}>Logout</a>
+	    {{#link-to "donors"}}Donors{{/link-to}}
 	  {{else}}
 	    {{#link-to 'login'}}Login{{/link-to}}
 	  {{/if}}	
