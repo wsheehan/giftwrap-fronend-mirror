@@ -2,10 +2,10 @@
 
 <div id="login-error"></div>
 
-<form {{action 'authenticate' on='submit'}} id="login-form">
+<form {{action 'authenticate' credentials on='submit'}} id="login-form">
   <label for="email">Login</label>
-  {{input id='email' placeholder='Enter Email' value=identification}}
+  {{input id='email' placeholder='Enter Email' value=credentials.identification}}
   <label for="password">Password</label>
-  {{input id='password' placeholder='Enter Password' type='password' value=password}}
+  {{input id='password' placeholder='Enter Password' type='password' value=credentials.password}}
   <button type="submit" class="btn btn-success">Login</button>
 </form>
