@@ -20,9 +20,11 @@
   "license": "MIT",
   "devDependencies": {
     "active-model-adapter": "2.1.1",
+    "braintree-web": "^3.0.1",
     "broccoli-asset-rev": "^2.4.2",
     "ember-ajax": "^2.0.1",
     "ember-bootstrap": "0.8.0",
+    "ember-browserify": "^1.1.12",
     "ember-cli": "2.6.2",
     "ember-cli-app-version": "^1.0.0",
     "ember-cli-babel": "^5.1.6",

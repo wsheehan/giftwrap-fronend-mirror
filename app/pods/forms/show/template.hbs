@@ -2,7 +2,8 @@
 
 <form id="form">
 
-	{{input type="hidden" value=model.form.braintreeToken}}
+	{{input type="hidden" value=model.form.braintreeToken id="braintreeToken"}}
+	{{input type="hidden" name=paymentMethodNonce}}
 
 	<div id="header">
 		<h2>Give to {{ model.client.name }}</h2>
@@ -58,8 +59,7 @@
 			</div>
 			<div id="totals">
 				<div>
-					<input type="radio" name="gift[total]" value="<%= @donor.suggested_gift %>" checked>
-					{{!-- <label for="gift_total_primary"><%= @donor.suggested_gift %></label> --}}
+					<input type="radio" name="gift[total]" value="100" checked>
 				</div>
 				<div>
 					<input type="radio" name="gift[total]" for="gift_total_other" id="gift_other_box">
@@ -94,51 +94,14 @@
 	{{/if}}
 
 	{{#if model.donor.email}}
-{{!-- 		<input type="hidden" name="donor[braintree_customer_id]" value="<%= @donor.braintree_customer_id %>">
-		<div id="saved-payment">
-			<% if @payment_method[:method] == 'Paypal' %>
-				<div>
-					<img src="https://s3.amazonaws.com/giving-gael/public/paypal_logo_small.png" id="paypal-logo" />
-					<span><%= @payment_method[:email] %></span>
-				</div>
-			<% else %>
-				<div id="saved-card">
-					<img src="<%= @payment_method[:image_url] %>" />
-					<span><%= @payment_method[:card_holder] %></span>
-					<span><%= @payment_method[:masked_number] %></span>
-				</div>
-			<% end %>
-		</div> --}}
 	{{else}}
-		<div id="payment-container">
-			<p>Payment Options</p>
-			<div id="payment-error">Please Enter a Payment Method</div>
-			<div id="card-payment">
-				<div>
-					<label>Card Number</label><br>
-					<div id="card-number" class="hosted"></div>
-				</div>
-				<div>
-					<label>Expiration Date</label><br>
-					<div id="exp-date" class="hosted"></div>
-				</div>
-			</div><div id="or">
-				<p>Or</p>
-			</div><div id="paypal-wrapper">
-				<img src="https://s3.amazonaws.com/giving-gael/public/paypal_button_small.png" id="paypal-button">
-			</div>
-			<div id="paypal-info">
-				<div id="paypal-email"></div>
-			</div>
-		</div>
+		{{#payment-container}}
+		{{/payment-container}}
 	{{/if}}
 
 	<p id="designate-link">I'd Like to specially designate this gift</p>
 	<div id="designation-wrapper">
 		<select id="designate-select" name="gift[designation]">
-			{{!-- <% @school.designation.each do |designation| %>
-				<option value="<%= designation %>" id="<%= 'other_select' if designation == 'Other' %>"><%= designation %></option>
-			<% end %> --}}
 		</select>
 		<div><input type="text" id="designation_other" placeholder="Other Designation"></div>
 	</div>
