@@ -1,0 +1,23 @@
+{{outlet}}
+
+<div>
+	<label>Title</label>
+	{{input value=newEmail.title}}
+</div>
+
+<div>
+	<label>Body</label>
+	{{textarea value=newEmail.body}}
+</div>
+
+<div>
+	<label>Email Address</label>
+	{{input value=newEmail.donorEmail}}
+</div>
+
+<div>
+	<label>Clients School or Organization Name</label>
+	{{input value=newEmail.clientName}}
+</div>
+
+<button {{ action "sendDemoEmail" newEmail }}>Send Demo</button>
