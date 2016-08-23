@@ -1,0 +1,305 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+#header {
+	text-align: center;
+}
+
+#form {
+	max-width: 600px;
+	padding: 25px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 500;
+	@media (min-width: 600px) {
+		margin-left: calc(50vw - 300px);
+		border: 1px solid #d3d3d3;
+	}
+}
+
+div .input-error {
+	border: 1px solid red;
+}
+
+.error {
+	color: red;
+	text-align: center;
+	font-size: 0.8em;
+	margin-top: -5px;
+}
+
+/* Donor Info */
+
+#donor_info {
+	text-align: center;
+	background-color: #FCFCFC;
+	border: 1px solid #a9a9a9;
+	border-radius: 5px;
+}
+
+/* Text Inputs */
+
+#inputs-wrapper {}
+
+.form-input, .hosted, #designation_other{
+	border: 1px solid #a9a9a9;
+	font-family: 'Cousine', sans-serif;
+	width: 100%;
+	height: 30px;
+	margin-bottom: 10px;
+	border-radius: 4px;
+	padding-left: 10px;
+	font-size: 1em;
+	background-color: #FCFCFC;
+}
+
+.form-input:focus {
+	border: 1px solid #d3d3d3;
+	outline: none;
+}
+
+.form-input-label {}
+
+/* Total */
+
+#gift-total {
+	width: 80%;
+	margin: auto;
+	margin-bottom: 10px;
+}
+
+#how-much {
+	text-align: center;
+	margin-top: 10px;
+}
+
+#totals div {
+	padding: 5px;
+}
+
+#gift_total_other {
+	height: 25px;
+	font-size: 0.9em;
+	width: 100px;
+}
+
+/* Gift Type */
+
+#gift-type {
+	display: none;
+	> div {
+		display: inline-block;
+		> div {
+			text-align: center;
+			padding: 5px;
+		}	
+	}
+	input {
+		display: block;
+		margin: 0 auto;
+	}
+	> p {
+		text-align: center;
+		font-size: 1.3em;
+	}
+	> div:nth-child(3) div {
+		font-size: 0.8em;
+	}
+}
+
+/* Designate */
+
+#designate-link, #gift-type-link {
+	text-decoration: underline;
+	color: blue;
+	text-align: center;
+	font-size: 0.85em;
+}
+
+#designation-wrapper {
+	text-align: center;
+}
+
+#designate-select {
+	display: none;
+}
+
+#designation-wrapper > div {
+	text-align: center;
+}
+
+#designation-wrapper #designation_other {
+	display: none;
+	width: 50%;
+	margin-top: 10px;
+	margin-bottom: 0px;
+}
+
+/* Payment */
+
+#payment-container p {
+	text-align: center;
+}
+
+#payment-error {
+	display: none;
+	text-align: center;
+	padding: 5px;
+	margin: 10px;
+	border-radius: 4px;
+	border: 1px solid #EBCCD1;
+	background-color: #F2DEDE; 
+	color: #A94442;
+}
+
+#paypal-button {
+	width: 161px;
+	margin-left: calc(50% - 75px);
+	height: auto;
+	border-radius: 3px;
+	display: block;
+}
+
+#paypal-info {
+	display: none;
+	padding: 5px;
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: #FCFCFC;
+}
+
+#paypal-info {
+	div {
+		text-align: center;
+	}
+	#paypal-email {
+		font-size: 1.2em;
+	}
+	#paypal-cancel {
+		text-decoration: underline;
+		color: blue;
+		cursor: pointer;
+		font-size: 0.7em;
+	}
+}
+
+#paypal-logo {
+	height: 50px;
+	width: auto;
+}
+
+#saved-payment {
+	> div {
+		text-align: center;
+		padding: 3px;
+		border: 1px solid gray;
+		border-radius: 5px;
+		background-color: #FCFCFC;
+	}
+	span {
+		position: relative;
+		bottom: 20px;
+	}
+	#saved-card span {
+		bottom: 12px;
+		padding-left: 5px;
+	}
+}
+
+/* Recurring */
+
+#recurring {
+	p {
+		text-align: center;
+		font-size: 1.1em;
+	}
+	> div {
+		display: inline-block;
+		width: 25%;
+		> div {
+			text-align: center;
+			padding: 5px;
+		}
+	}
+	.first-radio {
+		margin-left: 12.5%;
+	}
+	input {
+		display: block;
+		margin: 0 auto;
+	}
+}
+
+/* Submit */
+
+#button-wrapper {
+	text-align: center;
+	margin: 15px;
+}
+
+#submit-button {
+	font-size: 1.5em;
+	padding: 6px 12px;
+	border-radius: 4px;
+	background-color: #f0ad4e;
+	border: 1px solid #f0ad4e;
+	color: white;
+	cursor: pointer;
+	font-family: helvetica, sans-serif;
+	&:hover {
+		opacity: 0.8;
+	}
+}
+
+/* Media Queries */
+
+@media (min-width: 500px) {
+	#gift-type > div { 
+		width: 25%; 
+	}
+	#gift-type .first-radio { 
+		margin-left: 12.5%; 
+	}
+	#card-payment, #paypal-wrapper {
+		display: inline-block;
+		width: 50%;
+	}
+	#card-number, #exp-date {
+		width: 150px;
+	}
+	#or { 
+		display: none; 
+	}
+	#card-payment > div {
+		margin-left: calc(50% - 75px);
+	}
+}
+@media (max-width: 500px) {
+	#gift-type > div {
+		width: 30%; 
+	}
+	#gift-type .first-radio { 
+		margin-left: 5%; 
+	}
+	#card-payment label {
+		margin-left: 5%;
+	}
+	#card-payment, #paypal-wrapper {
+		display: block;
+	}
+	#card-number, #exp-date {
+		width: 90%;
+		margin-left: 5%;
+	}
+	#or {
+		display: block;
+		text-align: center;
+	}
+}
+
+@media (max-width: 400px) {
+	#recurring {
+		font-size: 0.8em;
+	}
+	#gift-type {
+		font-size: 0.8em;
+	}
+}
