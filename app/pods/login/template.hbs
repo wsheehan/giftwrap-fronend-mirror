@@ -1,11 +1,14 @@
 {{outlet}}
 
-<div id="login-error"></div>
+<div id="login-wrapper">
+	<h2>Login</h2>
+	<div id="login-error"></div>
 
-<form {{action 'authenticate' credentials on='submit'}} id="login-form">
-  <label for="email">Login</label>
-  {{input id='email' placeholder='Enter Email' value=credentials.identification}}
-  <label for="password">Password</label>
-  {{input id='password' placeholder='Enter Password' type='password' value=credentials.password}}
-  <button type="submit" class="btn btn-success">Login</button>
-</form>
+	<form {{action 'authenticate' credentials on='submit'}} id="login-form">
+	  <label for="email">Email</label>
+	  {{input id='email' value=credentials.identification}}
+	  <label for="password">Password</label>
+	  {{input id='password' type='password' value=credentials.password}}
+	  <button type="submit" class="btn btn-success">Login</button>
+	</form>
+</div>
