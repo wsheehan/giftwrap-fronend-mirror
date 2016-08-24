@@ -1,5 +1,27 @@
-#login-form {
-	label, input {
-		display: block;
+#login-wrapper {
+	max-width: 100%;
+	width: 400px;
+	margin: 25px auto 0 auto;
+	padding: 20px;
+	border: 1px solid #eee;
+	h2 {
+		margin: 0;
+		text-align: center;
+	}
+	#login-form {
+		label {
+			display: block;
+		}
+		input {
+			display: block;
+			border-color: #eee;
+			border-width: 0 0 1px 0;
+			margin-bottom: 20px;
+			width: 100%;
+			&:focus {
+				outline: none;
+				outline-offset: 0px;
+			}
+		}
 	}
 }
