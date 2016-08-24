@@ -14,7 +14,6 @@ export default Ember.Route.extend({
 	},
 	actions: {
 		submitForm(newGift, newDonor) {
-			console.log(newGift);
 			let nonce = document.getElementById('paymentMethodNonce').value;
 			let donor = this.get('store').createRecord('donor', newDonor);
 			donor.save().then((returnedDonor) => {
