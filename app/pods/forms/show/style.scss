@@ -6,7 +6,7 @@
 
 #form {
 	max-width: 600px;
-	padding: 25px;
+	padding: 10px;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 500;
 	@media (min-width: 600px) {
@@ -37,26 +37,35 @@ div .input-error {
 
 /* Text Inputs */
 
-#inputs-wrapper {}
-
-.form-input, .hosted, #designation_other{
-	border: 1px solid #a9a9a9;
-	font-family: 'Cousine', sans-serif;
-	width: 100%;
-	height: 30px;
-	margin-bottom: 10px;
-	border-radius: 4px;
-	padding-left: 10px;
-	font-size: 1em;
-	background-color: #FCFCFC;
+#inputs-wrapper {
+	> div {
+		display: inline-block;
+		width: 80%;
+		margin-left: 10%;
+		&:nth-child(2), &:nth-child(3) {
+			width: 37.5%;
+		}
+		&:nth-child(3) {
+			margin-left: 5%;
+		}
+	}
+	.form-input {
+		height: 40px;
+		padding-left: 10px;
+		background: rgba(255, 255, 255, 0.86);
+		border: 1px solid #ebebeb;
+		box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
+		width: 100%;
+		margin-bottom: 10px;
+		border-radius: 2px;
+		font-size: 16px;
+	}
+	.form-input {
+		border: 1px solid #d3d3d3;
+		outline: none;
+		&:focus {}
+	}
 }
-
-.form-input:focus {
-	border: 1px solid #d3d3d3;
-	outline: none;
-}
-
-.form-input-label {}
 
 /* Total */
 
@@ -135,8 +144,43 @@ div .input-error {
 
 /* Payment */
 
-#payment-container p {
-	text-align: center;
+#payment-container {
+	p {
+		text-align: center;
+	}
+	#card-payment {
+		.hosted {
+			height: 40px;
+			padding-left: 10px;
+			background: rgba(255, 255, 255, 0.86);
+			border: 1px solid #ebebeb;
+			box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
+			border-radius: 2px;
+		}
+		.braintree-hosted-fields-focused {
+			border-color: blue;
+		}
+		.braintree-hosted-fields-invalid {
+			box-shadow: 0 0 4px 1px tomato;
+			border-color: white;
+		}
+		.braintree-hosted-fields-valid {
+			box-shadow: 0 0 4px 1px green;
+			border-color: white;
+		}
+		> div {
+			display: inline-block;
+			width: 37.5%;
+			margin-left: 10%;
+			margin-top: 10px;
+			&:first-child {
+				width: 80%;
+			}
+			&:nth-child(3) {
+				margin-left: 5%;
+			}
+		}
+	}
 }
 
 #payment-error {
@@ -158,26 +202,25 @@ div .input-error {
 	display: block;
 }
 
-#paypal-info {
-	display: none;
-	padding: 5px;
-	border: 1px solid gray;
-	border-radius: 3px;
-	background-color: #FCFCFC;
-}
-
-#paypal-info {
-	div {
-		text-align: center;
-	}
-	#paypal-email {
-		font-size: 1.2em;
-	}
-	#paypal-cancel {
-		text-decoration: underline;
-		color: blue;
-		cursor: pointer;
-		font-size: 0.7em;
+#payment-details {
+	#paypal-info, #card-info {
+		display: none;
+		padding: 5px;
+		border: 1px solid gray;
+		border-radius: 3px;
+		background-color: #FCFCFC;
+		div {
+			text-align: center;
+		}
+		#paypal-email {
+			font-size: 1.2em;
+		}
+		#paypal-cancel, #card-cancel {
+			text-decoration: underline;
+			color: blue;
+			cursor: pointer;
+			font-size: 0.7em;
+		}
 	}
 }
 
@@ -258,16 +301,6 @@ div .input-error {
 	#gift-type .first-radio { 
 		margin-left: 12.5%; 
 	}
-	#card-payment, #paypal-wrapper {
-		display: inline-block;
-		width: 50%;
-	}
-	#card-number, #exp-date {
-		width: 150px;
-	}
-	#or { 
-		display: none; 
-	}
 	#card-payment > div {
 		margin-left: calc(50% - 75px);
 	}
@@ -278,20 +311,6 @@ div .input-error {
 	}
 	#gift-type .first-radio { 
 		margin-left: 5%; 
-	}
-	#card-payment label {
-		margin-left: 5%;
-	}
-	#card-payment, #paypal-wrapper {
-		display: block;
-	}
-	#card-number, #exp-date {
-		width: 90%;
-		margin-left: 5%;
-	}
-	#or {
-		display: block;
-		text-align: center;
 	}
 }
 

@@ -16,18 +16,15 @@
 				<label for="donorEmail" class="form-input-label">Email</label><br>
 				{{input id="donorEmail" class="form-input" value=newDonor.email}}
 				<div id="donorEmailError" class="error"></div>
-			</div>
-			<div>
+			</div><div>
 				<label for="donorFirstName" class="form-input-label">First Name</label><br>
 				{{input id="donorFirstName" class="form-input" value=newDonor.firstName}}
 				<div id="donorFirstNameError" class="error"></div>
-			</div>
-			<div>
+			</div><div>
 				<label for="donorLastName" class="form-input-label">Last Name</label><br>
 				{{input id="donorLastName" class="form-input" value=newDonor.lastName}}
 				<div id="donorLastNameError" class="error"></div>
-			</div>
-			<div>
+			</div><div>
 				<label for="donorPhoneNumber" class="form-input-label">Cell Number</label><br>
 				{{input id="donorPhoneNumber" class="form-input" value=newDonor.phoneNumber}}
 				<div id="donorPhoneNumberError" class="error"></div>
@@ -68,6 +65,7 @@
 		<div id="gift-total">
 			<div id="how-much">
 				<p>How much would you like to give?</p>
+				{{input value=newGift.total}}
 			</div>
 			<div id="totals">
 				<div>

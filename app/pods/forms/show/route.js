@@ -17,11 +17,12 @@ export default Ember.Route.extend({
 			let nonce = document.getElementById('paymentMethodNonce').value;
 			let donor = this.get('store').createRecord('donor', newDonor);
 			donor.save().then((returnedDonor) => {
-				let gift = this.get('store').createRecord('gift', { newGift, donor: donor, paymentMethodNonce: nonce });
+				let gift = this.get('store').createRecord('gift', Object.assign(newGift, { donor: donor, paymentMethodNonce: nonce }));
 				gift.save().then((returnedGift) => {
 					alert("Gift Saved");
 				}, (error) => {
 					alert(error);
+					console.log(error)
 				});
 			}, (error) => {
 				console.log(error);
