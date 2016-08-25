@@ -5,7 +5,7 @@
 }
 
 // Global Input Styling
-.form-input, #card-payment .hosted, #totals input {
+.form-input, #card-payment .hosted, #totals input, #designation-other {
 	padding-left: 10px;
 	background: rgba(255, 255, 255, 0.86);
 	border: 1px solid #ebebeb;
@@ -145,31 +145,31 @@ div .input-error {
 	color: blue;
 	text-align: center;
 	font-size: 0.85em;
+	margin-top: 10px;
 }
 
 #designation-wrapper {
 	text-align: center;
-}
-
-#designate-select {
 	display: none;
-}
-
-#designation-wrapper > div {
-	text-align: center;
-}
-
-#designation-wrapper #designation_other {
-	display: none;
-	width: 50%;
-	margin-top: 10px;
-	margin-bottom: 0px;
+	> div {
+		text-align: center;
+	}
+	#designation-other {
+		display: none;
+		height: 30px;
+		//width: 50%;
+		margin-top: 10px;
+		margin-bottom: 0px;
+	}
+	#designate-select {
+		height: 30px;
+	}
 }
 
 /* Payment */
 
 #payment-container {
-	p {
+	h4 {
 		text-align: center;
 	}
 	#card-payment {
@@ -268,25 +268,37 @@ div .input-error {
 
 /* Recurring */
 
+.recurring-circle-wrapper {
+	border: 1px dotted black;
+	display: inline-block;
+}
+
 #recurring {
 	p {
 		text-align: center;
 		font-size: 1.1em;
 	}
-	> div {
-		display: inline-block;
-		width: 25%;
-		> div {
-			text-align: center;
-			padding: 5px;
+	.recurring-circle {
+		padding: 15px;
+		border: 1px solid #ebebeb;
+		text-align: center;
+		width: 16%;
+		margin-left: 7%;
+		border-radius: 100%;
+		&:nth-child(1) {
+			margin-left: 18%;
+		}
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		// transition: background-color 1s ease-out;
+		&:hover {
+			background-color: lightgreen;
+			color: white;
 		}
 	}
-	.first-radio {
-		margin-left: 12.5%;
-	}
-	input {
-		display: block;
-		margin: 0 auto;
+	.recurring-circle-selected {
+		border: 1px solid blue;
 	}
 }
 

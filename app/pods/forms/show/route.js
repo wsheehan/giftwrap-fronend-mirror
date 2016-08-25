@@ -8,9 +8,11 @@ export default Ember.Route.extend({
 		 	client: this.get('store').findRecord('client', params.client_id)
 		});
 	},
-	setupController(controller, params) {
+	setupController(controller, models) {
+		controller.set("form", models.form);
+		controller.set("client", models.client)
 		controller.set("newGift", {});
-		controller.set("newDonor", { "client_id": params.client.id });
+		controller.set("newDonor", { "client_id": models.client.id });
 	},
 	actions: {
 		submitForm(newGift, newDonor) {
