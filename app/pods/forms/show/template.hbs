@@ -3,7 +3,7 @@
 <form id="form">
 
 	<div id="header">
-		<h2>Give to {{ model.client.name }}</h2>
+		<h2>Give to {{ client.name }}</h2>
 	</div>
 
 	{{#if model.something}}
@@ -64,7 +64,7 @@
 	{{else}}
 		<div id="gift-total">
 			<div id="how-much">
-				<p>How much would you like to give?</p>
+				<h4>How much would you like to give?</h4>
 			</div>
 			<div id="totals">
 				<div class="gift-total-box" id="gift-total-25" {{ action "setTotal" 25 newGift }}>
@@ -74,7 +74,8 @@
 				$250</div><div class="gift-total-box" id="gift-total-500" {{ action "setTotal" 500 newGift }}>
 				$500</div><div class="gift-total-box" id="gift-total-1000" {{ action "setTotal" 1000 newGift }}>
 				$1000</div>
-				{{ input type="text" value=newGift.total id="total-other" focus-in="showText"}}
+				{{!-- <p>Other Total</p> --}}
+				{{ input type="text" value=newGift.total id="total-other" focus-in="showText" placeholder="Other"}}
 			</div>
 		</div>
 	{{/if}}
@@ -85,26 +86,21 @@
 		{{/payment-container}}
 	{{/if}}
 
-	{{!-- <p id="designate-link">I'd Like to specially designate this gift</p>
+	<p id="designate-link" {{ action "showDesignations" }}>I'd Like to specially designate this gift</p>
 	<div id="designation-wrapper">
-		<select id="designate-select" name="gift[designation]">
+		<select id="designate-select" {{ action "designateSelect" newGift on="change" }}>
+			<option>Athletics</option>
+			<option>Academics</option>
+			<option>Other</option>
 		</select>
-		<div><input type="text" id="designation_other" placeholder="Other Designation"></div>
+		<div>{{ input id="designation-other" placeholder="Other Designation" value=newGift.designation }}</div>
 	</div>
 
 	<div id="recurring">
 		<p>Make this a Recurring Gift</p>
-		<div class="first-radio">
-			<input type="radio" name="donor[gift_frequency]" value="monthly">
-			<div>Monthly</div>
-		</div><div>
-			<input type="radio" name="donor[gift_frequency]" value="quarterly">
-			<div>Quarterly</div>
-		</div><div>
-			<input type="radio" name="donor[gift_frequency]" value="annually">
-			<div>Annually</div>
-		</div>
-	</div> --}}
+		{{#recurring-circle newDonor=newDonor}}
+		{{/recurring-circle}}
+	</div>
 
 	<div id="button-wrapper">
 		<input type="submit" id="submit-button" value="Give Now" {{ action "submitForm" newGift newDonor }}>

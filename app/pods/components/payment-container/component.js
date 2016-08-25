@@ -47,7 +47,7 @@ export default Ember.Component.extend({
 							$("#payment-container").slideDown(400);
 						}
 					});
-				})
+				});
 			});
 
 			// Instantiate Hosted Fields
@@ -99,7 +99,6 @@ export default Ember.Component.extend({
 							alert("(Hosted) Could not tokenize: " + tokenizeErr);
 							return;
 						}
-						console.log(payload)
 						document.getElementById('paymentMethodNonce').value = payload.nonce;
 						document.getElementById('card-info').style.display = 'block';
 						//document.getElementById('paypal-email').innerHTML = '' + payload.details.email + '';
@@ -117,9 +116,8 @@ export default Ember.Component.extend({
 							$("#payment-details").hide(100);
 							$("#payment-container").slideDown(400);
 						}
-			    	})
-			    })
-
+			    	});
+			    });
 			});
 
 		});
