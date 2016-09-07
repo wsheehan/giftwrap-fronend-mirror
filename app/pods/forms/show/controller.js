@@ -1,6 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+	queryParams: ["k"],
+	k: null,
+
 	actions: {
 		setTotal(total, newGift) {
 			this.set("newGift.total", total);
@@ -22,6 +25,16 @@ export default Ember.Controller.extend({
 			} else {
 				this.set("newGift.designation", Ember.$("#designate-select").val());
 			}
+		},
+		setFrequency(freq, newDonor, updateDonor) {
+			if (newDonor) {
+				this.set("newDonor.giftFrequency", freq);
+			} else if (updateDonor) {
+				// Can't set this way because it's a model instance....
+				//this.set("donor.giftFrequency", freq);
+			}
+			Ember.$("#recurring > div").removeClass('frequency-selected');
+			Ember.$("#frequency-" + freq).addClass('frequency-selected');
 		}
 	}
 });
