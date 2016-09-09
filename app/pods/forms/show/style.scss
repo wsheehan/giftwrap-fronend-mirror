@@ -4,6 +4,27 @@
 	text-align: center;
 }
 
+#form-background {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	z-index: -1;
+	.image-fit-screen {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+// Globals
+
+.hide-mobile {
+	@media (max-width: 600px) {
+		display: none;
+	}
+}
+
 // Global Input Styling
 .form-input, #card-payment .hosted, #totals input, #designation-other {
 	padding-left: 10px;
@@ -15,6 +36,7 @@
 }
 
 #form {
+	background-color: rgba(245,245,245, 0.97);
 	max-width: 600px;
 	padding: 10px;
 	font-family: 'Open Sans', sans-serif;
@@ -38,11 +60,19 @@ div .input-error {
 
 /* Donor Info */
 
-#donor_info {
-	text-align: center;
-	background-color: #FCFCFC;
-	border: 1px solid #a9a9a9;
-	border-radius: 5px;
+#donor-info {
+	width: 80%;
+	margin-left: 10%;
+	border: 1px solid #ebebeb;
+	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
+	background: rgba(255, 255, 255, 0.86);
+	h4 {
+		margin-top: 10px;
+		text-align: center;
+	}
+	p {
+		padding-left: 5%;
+	}
 }
 
 /* Text Inputs */
@@ -58,12 +88,26 @@ div .input-error {
 		&:nth-child(3) {
 			margin-left: 5%;
 		}
+		> span {
+			display: inline-block;
+			width: 8%;
+			border: 1px solid #ebebeb;
+			background-color: #f5f5f5;
+			height: 40px;
+			padding: 10px;
+			border-radius: 2px 0px 0px 2px;
+		}
 	}
 	.form-input {
 		height: 40px;
 		width: 100%;
 		margin-bottom: 10px;
 		font-size: 16px;
+	}
+	#donor-phone-number {
+		margin-left: 0%;
+		width: 92%;
+		border-radius: 0px 2px 2px 0px;
 	}
 }
 
@@ -73,6 +117,7 @@ div .input-error {
 	margin-top: 10px;
 	text-align: center;
 	.gift-total-box {
+		background-color: #fff;
 		border: 1px solid #ebebeb;
 		padding: 10px;
 		border-radius: 2px;
@@ -88,8 +133,21 @@ div .input-error {
 	.gift-total-selected {
 		border: 1px solid red;
 	}
-	input {
+	#total-other {
 		height: 40px;
+		width: 60%;
+		z-index: 9;
+		border-radius: 2px 0px 0px 2px;
+	}
+	> span {
+		display: inline-block;
+		height: 40px;
+		border: 1px solid #d7d7d7;
+		padding: 9px;
+		background-color: #d6d6d6;
+		border-radius: 2px 0px 0px 2px;
+		margin-right: -4px;
+		z-index: 10;
 	}
 }
 
@@ -224,17 +282,21 @@ div .input-error {
 #payment-details {
 	#paypal-info, #card-info {
 		display: none;
-		padding: 5px;
-		border: 1px solid gray;
-		border-radius: 3px;
-		background-color: #FCFCFC;
+		width: 80%;
+		margin-left: 10%;
+		background: rgba(255, 255, 255, 0.86);
+		border: 1px solid #ebebeb;
+		box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
+		border-radius: 2px;
 		div {
 			text-align: center;
 		}
 		#paypal-email {
 			font-size: 1.2em;
+			padding-top: 5px;
 		}
 		#paypal-cancel, #card-cancel {
+			padding-bottom: 5px;
 			text-decoration: underline;
 			color: blue;
 			cursor: pointer;
@@ -268,37 +330,27 @@ div .input-error {
 
 /* Recurring */
 
-.recurring-circle-wrapper {
-	border: 1px dotted black;
-	display: inline-block;
-}
-
 #recurring {
 	p {
 		text-align: center;
 		font-size: 1.1em;
 	}
-	.recurring-circle {
-		padding: 15px;
-		border: 1px solid #ebebeb;
+	> div {
+		display: inline-block;
+		width: 20%;
 		text-align: center;
-		width: 16%;
-		margin-left: 7%;
-		border-radius: 100%;
-		&:nth-child(1) {
-			margin-left: 18%;
-		}
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		// transition: background-color 1s ease-out;
-		&:hover {
-			background-color: lightgreen;
-			color: white;
+		margin-left: 5%;
+		padding: 10px;
+		background: rgba(255, 255, 255, 0.86);
+		border: 1px solid #ebebeb;
+		box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
+		border-radius: 2px;
+		&:nth-child(2) {
+			margin-left: 15%;
 		}
 	}
-	.recurring-circle-selected {
-		border: 1px solid blue;
+	.frequency-selected {
+		border: 1px solid red;
 	}
 }
 
@@ -309,19 +361,7 @@ div .input-error {
 	margin: 15px;
 }
 
-#submit-button {
-	font-size: 1.5em;
-	padding: 6px 12px;
-	border-radius: 4px;
-	background-color: #f0ad4e;
-	border: 1px solid #f0ad4e;
-	color: white;
-	cursor: pointer;
-	font-family: helvetica, sans-serif;
-	&:hover {
-		opacity: 0.8;
-	}
-}
+#submit-button {}
 
 /* Media Queries */
 
