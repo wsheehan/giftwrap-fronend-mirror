@@ -7,6 +7,7 @@ module.exports = function(environment) {
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
+    API_NAMESPACE: '/api/v1',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -21,7 +22,7 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
-    ENV.APP.API_URL = 'https://localhost:3000'
+    // ENV.APP.API_URL = 'https://localhost:3000'
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;

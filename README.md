@@ -3,6 +3,10 @@
 This README outlines the details of collaborating on this Ember application.
 A short introduction of this app could easily go here.
 
+## Proxied Server
+
+Use the following format: `ember s --port=3003 --proxy=https://localhost:3000 --insece-proxy`
+
 ## Prerequisites
 
 You will need the following things properly installed on your computer.

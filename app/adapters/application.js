@@ -3,6 +3,6 @@ import ENV from 'giving/config/environment';
 import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 
 export default ActiveModelAdapter.extend(DataAdapterMixin, {
-	host: ENV.APP.API_URL,
+	namespace: ENV.API_NAMESPACE,
 	authorizer: 'authorizer:token'
 });
