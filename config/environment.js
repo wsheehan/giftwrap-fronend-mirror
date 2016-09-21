@@ -51,7 +51,7 @@ module.exports = function(environment) {
   };
 
   ENV['ember-simple-auth-token'] = {
-    serverTokenEndpoint: '/users/authentication',
+    serverTokenEndpoint: 'https://localhost:3000/users/authentication',
   };
 
   return ENV;
