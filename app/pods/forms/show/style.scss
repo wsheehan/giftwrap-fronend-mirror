@@ -35,6 +35,14 @@
 	outline: none;
 }
 
+.input-error {
+	border: 1px solid #cc0000;
+}
+
+.input-success {
+	border: 1px solid #5cb85c;
+}
+
 #form {
 	background-color: rgba(245,245,245, 0.97);
 	max-width: 600px;
@@ -45,10 +53,6 @@
 		margin-left: calc(50vw - 300px);
 		border: 1px solid #d3d3d3;
 	}
-}
-
-div .input-error {
-	border: 1px solid red;
 }
 
 .error {
@@ -108,6 +112,11 @@ div .input-error {
 		margin-left: 0%;
 		width: 92%;
 		border-radius: 0px 2px 2px 0px;
+	}
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+	    -webkit-appearance: none;
+	    margin: 0;
 	}
 }
 
@@ -227,6 +236,7 @@ div .input-error {
 /* Payment */
 
 #payment-container {
+	display: none;
 	h4 {
 		text-align: center;
 	}

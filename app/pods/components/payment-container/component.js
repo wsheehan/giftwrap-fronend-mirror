@@ -2,7 +2,7 @@ import Ember from 'ember';
 import Braintree from 'npm:braintree-web';
 
 export default Ember.Component.extend({
-	didInsertElement() {
+	didRender() {
 		let token = document.getElementById('braintreeToken').value;
 		Braintree.client.create({
 			authorization: token
@@ -85,6 +85,8 @@ export default Ember.Component.extend({
 					console.log(hostedFieldsErr);
 					return;
 				}
+				
+				Ember.$("#payment-container").slideDown(500); // Show container once both methods have been instantiated
 
 				hostedFieldsInstance.on('validityChange', function (event) {
 			      // Check if all fields are valid, then show submit button
@@ -119,7 +121,6 @@ export default Ember.Component.extend({
 			    	});
 			    });
 			});
-
 		});
 	}
 });

@@ -31,31 +31,47 @@ export default Ember.Route.extend({
 	actions: {
 		submitForm(newGift, newDonor, donorId, updateDonor) {
 			let nonce = document.getElementById('paymentMethodNonce').value;
-			if (newDonor) {
-				let currentDonor = this.get('store').createRecord('donor', newDonor);
-				currentDonor.save().then((returnedDonor) => {
-					let gift = this.get('store').createRecord('gift', Object.assign(newGift, { donor: currentDonor, paymentMethodNonce: nonce }));
-					gift.save().then((returnedGift) => {
-						alert("Gift Saved");
-					}, (error) => {
-						alert(error);
-						console.log(error)
-					});
-				}, (error) => {
-					console.log(error);
-				});
-			} else if (donorId) {
-				let currentDonor = this.get('store').peekRecord('forms/donor', donorId);
-				if (currentDonor) {
-					let gift = this.get('store').createRecord('gift', Object.assign(newGift, { formDonor: currentDonor, paymentMethodNonce: nonce }));
-					gift.save().then((returnedGift) => {
-						alert("Gift Saved");
-					}, (error) => {
-						alert(error);
-						console.log(error)
-					});
-				}
+			let validity = 0;
+			if (newDonor.firstName && newDonor.lastName && newDonor.email && newDonor.phoneNumber) {
+				validity += 1;
 			}
+			if (newGift.total) {
+				validity += 1;
+			} else {
+
+			}
+			if (nonce) {
+				validity += 1;
+			}
+			console.log(validity);
+			if (validity !== 3) {
+				return;	
+			}
+			// if (newDonor) {
+			// 	let currentDonor = this.get('store').createRecord('donor', newDonor);
+			// 	currentDonor.save().then((returnedDonor) => {
+			// 		let gift = this.get('store').createRecord('gift', Object.assign(newGift, { donor: currentDonor, paymentMethodNonce: nonce }));
+			// 		gift.save().then((returnedGift) => {
+			// 			alert("Gift Saved");
+			// 		}, (error) => {
+			// 			alert(error);
+			// 			console.log(error)
+			// 		});
+			// 	}, (error) => {
+			// 		console.log(error);
+			// 	});
+			// } else if (donorId) {
+			// 	let currentDonor = this.get('store').peekRecord('forms/donor', donorId);
+			// 	if (currentDonor) {
+			// 		let gift = this.get('store').createRecord('gift', Object.assign(newGift, { formDonor: currentDonor, paymentMethodNonce: nonce }));
+			// 		gift.save().then((returnedGift) => {
+			// 			alert("Gift Saved");
+			// 		}, (error) => {
+			// 			alert(error);
+			// 			console.log(error)
+			// 		});
+			// 	}
+			// }
 		}
 	}
 });

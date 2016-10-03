@@ -21,7 +21,7 @@
 			{{#unless donor.phoneNumber}}
 			<div>
 				<label for="donor-phone-number" class="form-input-label">Cell Number</label><br>
-				<span>+1</span>{{input id="donor-phone-number" class="form-input" value=donor.phoneNumber }}
+				<span>+1</span>{{input id="donor-phone-number" type="number" class="form-input" value=donor.phoneNumber }}
 				<div id="donor-phone-number-error" class="error"></div>
 			</div>
 			{{/unless}}
@@ -30,7 +30,7 @@
 		<div id="inputs-wrapper">
 			<div>
 				<label for="donorEmail" class="form-input-label">Email</label><br>
-				{{input id="donorEmail" class="form-input" value=newDonor.email}}
+				{{input id="donorEmail" class="form-input" value=newDonor.email focus-out="validateEmail"}}
 				<div id="donorEmailError" class="error"></div>
 			</div><div>
 				<label for="donorFirstName" class="form-input-label">First Name</label><br>
@@ -42,7 +42,7 @@
 				<div id="donorLastNameError" class="error"></div>
 			</div><div>
 				<label for="donor-phone-number" class="form-input-label">Cell Number</label><br>
-				<span>+1</span>{{input id="donor-phone-number" class="form-input" value=newDonor.phoneNumber }}
+				<span>+1</span>{{input id="donor-phone-number" class="form-input" value=newDonor.phoneNumber type="number" }}
 				<div id="donor-phone-number-error" class="error"></div>
 			</div>
 		</div>
