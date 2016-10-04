@@ -1,5 +1,18 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
+$error-red : #cc0000; 
+
+@mixin error-block() {
+	padding: 5px;
+	text-align: center;
+	color: $error-red;
+	border: 1px solid $error-red;
+	border-radius: 3px;
+	background-color: white;
+	margin: 10px 10%;
+	width: 80%;
+}
+
 #header {
 	text-align: center;
 }
@@ -26,7 +39,7 @@
 }
 
 // Global Input Styling
-.form-input, #card-payment .hosted, #totals input, #designation-other {
+.form-input, #card-payment .hosted, #total-other, #designation-other {
 	padding-left: 10px;
 	background: rgba(255, 255, 255, 0.86);
 	border: 1px solid #ebebeb;
@@ -36,7 +49,7 @@
 }
 
 .input-error {
-	border: 1px solid #cc0000;
+	border: 1px solid $error-red !important;
 }
 
 .input-success {
@@ -160,6 +173,11 @@
 	}
 }
 
+#totals-error {
+	display: none;
+	@include error-block();
+}
+
 #gift-total {
 	width: 80%;
 	margin: auto;
@@ -268,6 +286,10 @@
 			}
 		}
 	}
+}
+
+.payment-submit-error {
+	@include error-block();
 }
 
 #payment-error {

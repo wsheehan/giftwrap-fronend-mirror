@@ -37,16 +37,15 @@ export default Ember.Controller.extend({
 			Ember.$("#frequency-" + freq).addClass('frequency-selected');
 		},
 		validateEmail() {
-			let email = document.getElementById('donorEmail')
-			//let value = document.getElementById('donorEmail').value;
+			let email = document.getElementById('donor-email');
 			if (/\S+@\S+\.\S+/.test(email.value)) {
-				Ember.$("#donorEmail").removeClass('input-error');
-				Ember.$("#donorEmail").addClass('input-success');
-				document.getElementById("donorEmailError").innerText = "";
+				Ember.$("#donor-email").removeClass('input-error');
+				Ember.$("#donor-email").addClass('input-success');
+				document.getElementById("donor-email-error").innerText = "";
 				// check against database...
 			} else {
-				Ember.$("#donorEmail").addClass('input-error');
-				document.getElementById("donorEmailError").innerText = 'Please enter a valid email address';
+				Ember.$("#donor-email").addClass('input-error');
+				document.getElementById("donor-email-error").innerText = 'Please enter a valid email address';
 				email.focus();
 			}
 		}
