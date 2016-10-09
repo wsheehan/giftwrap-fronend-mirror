@@ -35,6 +35,19 @@ export default Ember.Controller.extend({
 			}
 			Ember.$("#recurring > div").removeClass('frequency-selected');
 			Ember.$("#frequency-" + freq).addClass('frequency-selected');
+		},
+		validateEmail() {
+			let email = document.getElementById('donor-email');
+			if (/\S+@\S+\.\S+/.test(email.value)) {
+				Ember.$("#donor-email").removeClass('input-error');
+				Ember.$("#donor-email").addClass('input-success');
+				document.getElementById("donor-email-error").innerText = "";
+				// check against database...
+			} else {
+				Ember.$("#donor-email").addClass('input-error');
+				document.getElementById("donor-email-error").innerText = 'Please enter a valid email address';
+				email.focus();
+			}
 		}
 	}
 });

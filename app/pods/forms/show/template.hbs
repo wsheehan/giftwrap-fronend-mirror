@@ -21,7 +21,7 @@
 			{{#unless donor.phoneNumber}}
 			<div>
 				<label for="donor-phone-number" class="form-input-label">Cell Number</label><br>
-				<span>+1</span>{{input id="donor-phone-number" class="form-input" value=donor.phoneNumber }}
+				<span>+1</span>{{input id="donor-phone-number" type="number" class="form-input" value=donor.phoneNumber }}
 				<div id="donor-phone-number-error" class="error"></div>
 			</div>
 			{{/unless}}
@@ -29,20 +29,20 @@
 	{{else}}
 		<div id="inputs-wrapper">
 			<div>
-				<label for="donorEmail" class="form-input-label">Email</label><br>
-				{{input id="donorEmail" class="form-input" value=newDonor.email}}
-				<div id="donorEmailError" class="error"></div>
+				<label for="donor-email" class="form-input-label">Email</label><br>
+				{{input id="donor-email" class="form-input" value=newDonor.email focus-out="validateEmail"}}
+				<div id="donor-email-error" class="error"></div>
 			</div><div>
-				<label for="donorFirstName" class="form-input-label">First Name</label><br>
-				{{input id="donorFirstName" class="form-input" value=newDonor.firstName}}
-				<div id="donorFirstNameError" class="error"></div>
+				<label for="donor-first-name" class="form-input-label">First Name</label><br>
+				{{input id="donor-first-name" class="form-input" value=newDonor.firstName}}
+				<div id="donor-first-name-error" class="error"></div>
 			</div><div>
-				<label for="donorLastName" class="form-input-label">Last Name</label><br>
-				{{input id="donorLastName" class="form-input" value=newDonor.lastName}}
-				<div id="donorLastNameError" class="error"></div>
+				<label for="donor-last-name" class="form-input-label">Last Name</label><br>
+				{{input id="donor-last-name" class="form-input" value=newDonor.lastName}}
+				<div id="donor-last-name-error" class="error"></div>
 			</div><div>
 				<label for="donor-phone-number" class="form-input-label">Cell Number</label><br>
-				<span>+1</span>{{input id="donor-phone-number" class="form-input" value=newDonor.phoneNumber }}
+				<span>+1</span>{{input id="donor-phone-number" class="form-input" value=newDonor.phoneNumber type="number" }}
 				<div id="donor-phone-number-error" class="error"></div>
 			</div>
 		</div>
@@ -76,6 +76,7 @@
 					<input type="text" id="gift_total_other" placeholder="Other">
 				</div>
 			</div>
+			<div id="totals-error"></div>
 		</div>
 	{{else}}
 		<div id="gift-total">
@@ -92,6 +93,7 @@
 				$1000</div>
 				<span>$</span>{{ input type="text" value=newGift.total id="total-other" focus-in="showText" placeholder="Other Amount"}}
 			</div>
+			<div id="totals-error"></div>
 		</div>
 	{{/if}}
 
