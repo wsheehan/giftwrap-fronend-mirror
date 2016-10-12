@@ -6,7 +6,5 @@ export default Model.extend({
 	total: attr('string'),
 	designation: attr('string'),
 	giftType: attr('string'),
-	donor: belongsTo('donor'),
-	formDonor: belongsTo('forms/donor'),
-	paymentMethodNonce: attr('string')
+	donor: belongsTo('donor')
 });
