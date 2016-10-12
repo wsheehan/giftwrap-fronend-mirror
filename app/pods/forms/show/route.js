@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import RSVP from 'rsvp';
-import UpdateDonorAfterSumitComponent from 'giving/pods/components/update-donor-after-submit/component'
 
 export default Ember.Route.extend({
 	model(params) {
