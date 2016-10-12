@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import RSVP from 'rsvp';
+import UpdateDonorAfterSumitComponent from 'giving/pods/components/update-donor-after-submit/component'
 
 export default Ember.Route.extend({
 	model(params) {
@@ -29,13 +30,12 @@ export default Ember.Route.extend({
 		controller.set("hideHeader", true);
 	},
 	actions: {
-		submitForm(newGift, newDonor, donorId, updateDonor) {
+		submitForm(newGift, newDonor, donor, client) {
 			let nonce = document.getElementById('paymentMethodNonce').value;
 			let fields = [newDonor.firstName, newDonor.lastName, newDonor.email, newDonor.phoneNumber, newGift.total, nonce];
 			let valid = true; let i;
 			for (i = 0; i < fields.length; i++) {
 				if (i === 4) {
-					console.log(fields[i])
 					if (fields[i] === undefined) {
 						document.getElementById('totals-error').innerText = "Please Specify a Total";
 						document.getElementById('totals-error').style.display = "block";
@@ -95,31 +95,13 @@ export default Ember.Route.extend({
 				}
 			}
 			if (valid) {
-				if (newDonor) {
-					let currentDonor = this.get('store').createRecord('donor', newDonor);
-					currentDonor.save().then((returnedDonor) => {
-						let gift = this.get('store').createRecord('gift', Object.assign(newGift, { donor: currentDonor, paymentMethodNonce: nonce }));
-						gift.save().then((returnedGift) => {
-							alert("Gift Saved");
-						}, (error) => {
-							alert(error);
-							console.log(error)
-						});
-					}, (error) => {
-						console.log(error);
-					});
-				} else if (donorId) {
-					let currentDonor = this.get('store').peekRecord('forms/donor', donorId);
-					if (currentDonor) {
-						let gift = this.get('store').createRecord('gift', Object.assign(newGift, { formDonor: currentDonor, paymentMethodNonce: nonce }));
-						gift.save().then((returnedGift) => {
-							alert("Gift Saved");
-						}, (error) => {
-							alert(error);
-							console.log(error)
-						});
-					}
-				}
+				let currentDonor = donor ? donor : newDonor;
+				let gift = this.get('store').createRecord("forms/gift", Object.assign(newGift, currentDonor, { paymentMethodNonce: nonce, client: client }));
+				gift.save().then((returnedGift) => {
+					alert("Gift Saved");
+				}, (error) => {
+					alert(error.errors.msg)
+				});
 			}
 		}
 	}
