@@ -16,5 +16,6 @@ export default Model.extend({
 	maskedNumber: attr('string'),
 	creditImageUrl: attr('string'),
 	paymentMethodNonce: attr('string'),
-	client: belongsTo('client')
+	client: belongsTo('client'),
+	formConversion: belongsTo('metrics/forms/conversion')
 });
