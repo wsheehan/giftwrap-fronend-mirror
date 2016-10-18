@@ -7,12 +7,14 @@ export default Ember.Route.extend({
 			return RSVP.hash({
 				form: this.get('store').findRecord('form', params.client_id),
 			 	client: this.get('store').findRecord('client', params.client_id),
-				donor: this.get('store').queryRecord('forms/donor', {"k": params.k, "c": params.client_id })
+				donor: this.get('store').queryRecord('forms/donor', {"k": params.k, "c": params.client_id }),
+				conversion: this.get('store').createRecord('metrics/forms/conversion', { "key": params.k, "client_id": params.client_id, "campaign_id": params.ca }).save()
 			});
 		} else {
 			return RSVP.hash({
 				form: this.get('store').findRecord('form', params.client_id),
-			 	client: this.get('store').findRecord('client', params.client_id)
+			 	client: this.get('store').findRecord('client', params.client_id),
+			 	conversion: this.get('store').createRecord('metrics/forms/conversion', { "client_id": params.client_id }).save()
 			});
 		}
 	},
@@ -20,6 +22,7 @@ export default Ember.Route.extend({
 		controller.set("form", models.form);
 		controller.set("client", models.client);
 		controller.set("newGift", {});
+		controller.set("conversion", models.conversion);
 		if (models.donor) {
 			controller.set("donor", models.donor);
 			controller.set('updateDonor', {});
@@ -29,7 +32,7 @@ export default Ember.Route.extend({
 		controller.set("hideHeader", true);
 	},
 	actions: {
-		submitForm(newGift, newDonor, donor, client) {
+		submitForm(newGift, newDonor, donor, client, conversion) {
 			let nonce = document.getElementById('paymentMethodNonce').value;
 			let fields = [newDonor.firstName, newDonor.lastName, newDonor.email, newDonor.phoneNumber, newGift.total, nonce];
 			let valid = true; let i;
@@ -95,7 +98,7 @@ export default Ember.Route.extend({
 			}
 			if (valid) {
 				let currentDonor = donor ? donor : newDonor;
-				let gift = this.get('store').createRecord("forms/gift", Object.assign(newGift, currentDonor, { paymentMethodNonce: nonce, client: client }));
+				let gift = this.get('store').createRecord("forms/gift", Object.assign(newGift, currentDonor, { paymentMethodNonce: nonce, client: client, formConversion: conversion }));
 				gift.save().then((returnedGift) => {
 					alert("Gift Saved");
 				}, (error) => {
