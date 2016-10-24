@@ -25,19 +25,17 @@ export default Ember.Route.extend({
 		controller.set("conversion", models.conversion);
 		if (models.donor) {
 			controller.set("donor", models.donor);
-			controller.set('updateDonor', {});
 		} else {
 			controller.set("newDonor", { "client_id": models.client.id });
 		}
 		controller.set("hideHeader", true);
 	},
 	actions: {
-		submitForm(newGift, newDonor, donor, client, conversion) {
-			let valid = true;
-			let nonce;
+		submitForm(newGift, newDonor, donor, client, conversion, isPaymentMethod) {
+			let valid = true; let nonce;
 			if (donor) {
 				checkTotal(newGift.total);
-				if (!this.get('donor.paymentMethod')) {
+				if (!isPaymentMethod) {
 					nonce = document.getElementById('paymentMethodNonce').value;
 					checkNonce(nonce);
 				}
@@ -54,7 +52,6 @@ export default Ember.Route.extend({
 
 				function checkBlank(field, fieldName) {
 					if (field === undefined || field === "") {
-						console.log("Hello");
 						Ember.$("#donor-" + fieldName).addClass("input-error");
 						Ember.$("#donor-" + fieldName + "-error").text("Cannot be blank");
 						valid = false;
@@ -93,8 +90,8 @@ export default Ember.Route.extend({
 				}
 			}
 			if (valid) {
-				let currentDonor = donor ? donor : newDonor;
-				let gift = this.get('store').createRecord("forms/gift", Object.assign(newGift, currentDonor, { paymentMethodNonce: nonce, client: client, formConversion: conversion }));
+				let currentDonor = donor ? donor.toJSON() : newDonor;
+				let gift = this.get('store').createRecord("forms/gift", Object.assign(newGift, currentDonor, { paymentMethodNonce: nonce, client: client, formConversion: conversion, newPaymentMethod: !isPaymentMethod }));
 				gift.save().then((returnedGift) => {
 					alert("Gift Saved");
 				}, (error) => {

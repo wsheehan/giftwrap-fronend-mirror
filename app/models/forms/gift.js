@@ -17,5 +17,6 @@ export default Model.extend({
 	creditImageUrl: attr('string'),
 	paymentMethodNonce: attr('string'),
 	client: belongsTo('client'),
-	formConversion: belongsTo('metrics/forms/conversion')
+	formConversion: belongsTo('metrics/forms/conversion'),
+	newPaymentMethod: attr('boolean', { defaultValue: false })
 });
