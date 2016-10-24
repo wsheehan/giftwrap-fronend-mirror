@@ -90,6 +90,36 @@ $error-red : #cc0000;
 	p {
 		padding-left: 5%;
 	}
+	#paypal-info-block, #credit-info-block {
+		padding: 12px;
+		border: 1px solid gray;
+		border-radius: 3px;
+		margin: 5px;
+		#credit-image {
+			display: inline-block;
+			width: 25%;
+			text-align: center;
+		}
+		>img {
+			width: 25%;
+			height: auto;
+		}
+		#paypal-email {
+			display: inline-block;
+			width: 40%;
+			color: #3676e8;
+			font-style: italic;
+			text-align: center;
+		}
+		.change-payment-method {
+			display: inline-block;
+			width: 30%;
+			text-decoration: underline;
+			color: gray;
+			text-align: center;
+			cursor: pointer;
+		}
+	}
 }
 
 /* Text Inputs */
