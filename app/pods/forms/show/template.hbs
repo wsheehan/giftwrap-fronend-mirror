@@ -62,40 +62,22 @@
 		</div>
 	</div> --}}
 
-	{{#if model.something}}
-		<div id="gift-total">
-			<div id="how-much">
-				<p>How much would you like to give?</p>
-			</div>
-			<div id="totals">
-				<div>
-					<input type="radio" name="gift[total]" value="100" checked>
-				</div>
-				<div>
-					<input type="radio" name="gift[total]" for="gift_total_other" id="gift_other_box">
-					<input type="text" id="gift_total_other" placeholder="Other">
-				</div>
-			</div>
-			<div id="totals-error"></div>
+	<div id="gift-total">
+		<div id="how-much">
+			<h4>How much would you like to give?</h4>
 		</div>
-	{{else}}
-		<div id="gift-total">
-			<div id="how-much">
-				<h4>How much would you like to give?</h4>
-			</div>
-			<div id="totals">
-				<div class="gift-total-box" id="gift-total-25" {{ action "setTotal" 25 newGift }}>
-				$25</div><div class="gift-total-box" id="gift-total-50" {{ action "setTotal" 50 newGift }}>
-				$50</div><div class="gift-total-box" id="gift-total-100" {{ action "setTotal" 100 newGift }}>
-				$100</div><div class="gift-total-box" id="gift-total-250" {{ action "setTotal" 250 newGift }}>
-				$250</div><div class="gift-total-box" id="gift-total-500" {{ action "setTotal" 500 newGift }}>
-				$500</div><div class="gift-total-box" id="gift-total-1000" {{ action "setTotal" 1000 newGift }}>
-				$1000</div>
-				<span>$</span>{{ input type="text" value=newGift.total id="total-other" focus-in="showText" placeholder="Other Amount"}}
-			</div>
-			<div id="totals-error"></div>
+		<div id="totals">
+			<div class="gift-total-box" id="gift-total-25" {{ action "setTotal" 25 newGift }}>
+			$25</div><div class="gift-total-box" id="gift-total-50" {{ action "setTotal" 50 newGift }}>
+			$50</div><div class="gift-total-box" id="gift-total-100" {{ action "setTotal" 100 newGift }}>
+			$100</div><div class="gift-total-box" id="gift-total-250" {{ action "setTotal" 250 newGift }}>
+			$250</div><div class="gift-total-box" id="gift-total-500" {{ action "setTotal" 500 newGift }}>
+			$500</div><div class="gift-total-box" id="gift-total-1000" {{ action "setTotal" 1000 newGift }}>
+			$1000</div>
+			<span>$</span>{{ input type="text" value=newGift.total id="total-other" focus-in="showText" placeholder="Other Amount"}}
 		</div>
-	{{/if}}
+		<div id="totals-error"></div>
+	</div>
 
 	{{#if model.something}}
 	{{else}}
