@@ -42,54 +42,34 @@ export default Ember.Route.extend({
 					checkNonce(nonce);
 				}
 			} else {
-				let fields = [newDonor.firstName, newDonor.lastName, newDonor.email, newDonor.phoneNumber, newGift.total, nonce];
-				let i;
-				for (i = 0; i < fields.length; i++) {
-					if (i === 4) {
-						checkTotal(newGift.total);
+				nonce = document.getElementById('paymentMethodNonce').value;
+
+				// Validate Fields
+				checkTotal(newGift.total);
+				checkNonce(nonce);
+				checkBlank(newDonor.firstName, "first-name");
+				checkBlank(newDonor.lastName, "last-name");
+				checkBlank(newDonor.phoneNumber, "phone-number");
+				checkEmail(newDonor.email);
+
+				function checkBlank(field, fieldName) {
+					if (field === undefined || field === "") {
+						console.log("Hello");
+						Ember.$("#donor-" + fieldName).addClass("input-error");
+						Ember.$("#donor-" + fieldName + "-error").text("Cannot be blank");
+						valid = false;
+					} else {
+						Ember.$("#donor-" + fieldName).removeClass("input-error");
+						Ember.$("#donor-" + fieldName + "-error").text("");
 					}
-					if (i === 5) {
-						nonce = document.getElementById('paymentMethodNonce').value;
-						checkNonce(nonce);
-					}
-					if (i === 0) {
-						if (fields[i] === undefined || fields[i] === "") {
-							Ember.$("#donor-first-name").addClass("input-error");
-							Ember.$("#donor-first-name-error").text("First Name Cannot be blank");
-							valid = false;
-						} else {
-							Ember.$("#donor-first-name").removeClass("input-error");
-							Ember.$("#donor-first-name-error").text("");
-						}			
-					} 
-					if (i === 1) {
-						if (fields[i] === undefined || fields[i] === "") {
-							Ember.$("#donor-last-name").addClass("input-error");
-							Ember.$("#donor-last-name-error").text("Last Name Cannot be blank");
-							valid = false;
-						} else {
-							Ember.$("#donor-last-name").removeClass("input-error");
-							Ember.$("#donor-last-name-error").text("");
-						}			
-					}
-					if (i === 2) {
-						if (/\S+@\S+\.\S+/.test(fields[i])) {
-							Ember.$("#donor-email").removeClass('input-error');
-							document.getElementById("donor-email-error").innerText = "";
-						} else {
-							Ember.$("#donor-email").addClass('input-error');
-							document.getElementById("donor-email-error").innerText = 'Please enter a valid email address';
-						}
-					}
-					if (i === 3) {
-						if (fields[i] === undefined || fields[i] === "") {
-							Ember.$("#donor-phone-number").addClass("input-error");
-							Ember.$("#donor-phone-number-error").text("Phone Number Cannot be blank");
-							valid = false;
-						} else {
-							Ember.$("#donor-phone-number").removeClass("input-error");
-							Ember.$("#donor-phone-number-error").text("");
-						}
+				}
+				function checkEmail(email) {
+					if (/\S+@\S+\.\S+/.test(email)) {
+						Ember.$("#donor-email").removeClass('input-error');
+						document.getElementById("donor-email-error").innerText = "";
+					} else {
+						Ember.$("#donor-email").addClass('input-error');
+						document.getElementById("donor-email-error").innerText = 'Please enter a valid email address';
 					}
 				}
 			}
