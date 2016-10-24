@@ -11,5 +11,6 @@ export default Model.extend({
 	paymentMethod: attr('string'),
 	paypalEmail: attr('string'),
 	maskedNumber: attr('string'),
-	creditImageUrl: attr('string')
+	creditImageUrl: attr('string'),
+	newPaymentMethod: attr('boolean', { defaultValue: false })
 });

@@ -48,6 +48,11 @@ export default Ember.Controller.extend({
 				document.getElementById("donor-email-error").innerText = 'Please enter a valid email address';
 				email.focus();
 			}
+		},
+		teardownPaymentMethod(donor) {
+			this.set('donor.paymentMethod', undefined);
+			this.set('donor.newPaymentMethod', true);
+			console.log(this.get('donor.lastName'));
 		}
 	}
 });
