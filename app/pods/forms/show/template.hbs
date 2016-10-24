@@ -9,26 +9,21 @@
 	</div>
 
 	<div id="header">
-		<h2>Give to {{ client.name }}</h2>
+		<h1>Give to {{ client.name }}</h1>
 	</div>
 
 	{{#if donor}}
 		<div id="donor-info">
-			<h4>Welcome Back {{ donor.firstName }} {{ donor.lastName }}!</h4>
-			<p>Email: {{ donor.email }}</p>
-			{{#if donor.phoneNumber }}<p>Cell #: {{ donor.phoneNumber }}</p>{{/if}}
+			<h4 id="welcome-back">Welcome Back {{ donor.firstName }} {{ donor.lastName }}!</h4>
 			{{#if donor.paymentMethod}}
-				<h4>Payment Details</h4>
 				{{#if donor.paypalEmail}}
 					<div id="paypal-info-block">
-						<img src="https://s3.amazonaws.com/giftwrap/logos/paypal-text.png">
-						<span id="paypal-email">{{donor.paypalEmail}}</span>
-						<span class="change-payment-method" {{action "teardownPaymentMethod" donor}}>change method</span>
+						<div id="paypal-logo"><img src="https://s3.amazonaws.com/giftwrap/logos/paypal-text.png"></div>
+						<span id="paypal-email">{{donor.paypalEmail}}</span><span class="change-payment-method" {{action "teardownPaymentMethod" donor}}>change method</span>
 					</div>
 				{{else}}
 					<div id="credit-info-block">
-						<div id="credit-image"><img src="{{donor.creditImageUrl}}"></div>
-						<span id="masked-number">{{donor.maskedNumber}}</span>
+						<div id="credit-image"><img src="{{donor.creditImageUrl}}"></div><span id="masked-number">{{donor.maskedNumber}}</span>
 						<span class="change-payment-method" {{action "teardownPaymentMethod" donor}}>change method</span>
 					</div>
 				{{/if}}
@@ -81,7 +76,7 @@
 
 	<div id="gift-total">
 		<div id="how-much">
-			<h4>How much would you like to give?</h4>
+			<h3>How much would you like to give?</h3>
 		</div>
 		<div id="totals">
 			<div class="gift-total-box" id="gift-total-25" {{ action "setTotal" 25 newGift }}>
