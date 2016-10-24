@@ -52,7 +52,6 @@ export default Ember.Controller.extend({
 		teardownPaymentMethod(donor) {
 			this.set('donor.paymentMethod', undefined);
 			this.set('donor.newPaymentMethod', true);
-			console.log(this.get('donor.lastName'));
 		}
 	}
 });
