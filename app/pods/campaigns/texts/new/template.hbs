@@ -1,0 +1,23 @@
+{{outlet}}
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-4 col-sm-offset-2" id="text-create">
+			<div>
+				<label>Text Body</label><br>
+				{{ textarea value=newText.body class="form-control" rows="12" }}
+			</div>
+		</div>
+
+		<div class="col-sm-4">
+			<div id="text-preview">
+				<div id="iphone-time">{{ currentTime.time }}</div>
+				<div id="iphone-date">{{ currentTime.day }}</div>
+				<p><span>+1 802-359-7135</span><br>{{newText.body}} {{#if newText.body}}<br><a src="https://giftwrap.io/forms/1">giftwrap.io/forms/1</a>{{/if}}</p>
+			</div>
+		</div>
+	</div>
+	<div class="row" id="btn-wrapper">
+		<button class="btn btn-lg btn-success" {{action 'sendTexts' newText}}>Send Texts</button>
+	</div>
+</div>

@@ -20,6 +20,10 @@ Router.map(function() {
         this.route('new');
       });
     });
+
+    this.route('texts', function() {
+      this.route('new');
+    });
   });
   this.route('login');
 

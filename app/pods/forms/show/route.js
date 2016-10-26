@@ -28,7 +28,6 @@ export default Ember.Route.extend({
 		} else {
 			controller.set("newDonor", { "client_id": models.client.id });
 		}
-		controller.set("hideHeader", true);
 	},
 	actions: {
 		submitForm(newGift, newDonor, donor, client, conversion, isPaymentMethod) {
