@@ -15,10 +15,6 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 		controller.set("chosenDonorList", {});
 	},
 	actions: {
-		donorListsNext(page, donorLists) {
-			this.set("donorLists", this.get('store').query('donor-list', { page: (page + 1), per: 5 }));
-			this.set("page", (page + 1));
-		},
 		searchDonorLists(e) {
 			// Send search query
 			const token = this.get('session.sessionToken');
