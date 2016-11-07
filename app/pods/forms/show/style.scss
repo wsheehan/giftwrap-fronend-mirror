@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url('https://fonts.googleapis.com/css?family=Rokkitt');
 
 $error-red : #cc0000; 
 
@@ -13,8 +14,31 @@ $error-red : #cc0000;
 	width: 80%;
 }
 
+@mixin input-styling() {
+	padding-left: 10px;
+	background: rgba(255, 255, 255, 0.86);
+	border: 1px solid #ebebeb;
+	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
+	//box-shadow: inset 0 1px 2px rgba(173, 202, 230, 0.2);
+	border-radius: 2px;
+	outline: none;
+	&:focus {
+		//box-shadow: 0 0 4px 1px #1e90ff;
+	}
+}
+
+#seal {
+	text-align: center;
+	img {
+		height: 100px;
+		width: 100px;
+	}
+}
+
 #header {
 	text-align: center;
+	margin-top: -15px;
+	font-family: 'Rokkitt';
 }
 
 #form-background {
@@ -40,12 +64,7 @@ $error-red : #cc0000;
 
 // Global Input Styling
 .form-input, #card-payment .hosted, #total-other, #designation-other {
-	padding-left: 10px;
-	background: rgba(255, 255, 255, 0.86);
-	border: 1px solid #ebebeb;
-	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
-	border-radius: 2px;
-	outline: none;
+	@include input-styling();
 }
 
 .input-error {
@@ -57,11 +76,14 @@ $error-red : #cc0000;
 }
 
 #form {
-	background-color: rgba(245,245,245, 0.97);
+	background-color: rgba(255,255,255,0.95);
 	max-width: 600px;
 	padding: 10px;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 500;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	border-radius: 3px;
 	@media (min-width: 600px) {
 		margin-left: calc(50vw - 300px);
 		border: 1px solid #d3d3d3;
@@ -78,21 +100,30 @@ $error-red : #cc0000;
 /* Donor Info */
 
 #donor-info {
-	width: 80%;
-	margin-left: 10%;
-	border: 1px solid #ebebeb;
-	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
+	@media (min-width: 600px) {
+		width: 80%;
+		margin-left: 10%;
+		border: 1px solid #ebebeb;
+		box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
+	}
 	background: rgba(255, 255, 255, 0.86);
-	h4 {
+	#welcome-back, h4 {
 		margin-top: 10px;
 		text-align: center;
+	}
+	#welcome-back {
+		background-color: #d9edf7;
+		color: #31708f;
+		padding: 15px;
+		margin: 10px;
+		border-radius: 3px;
 	}
 	p {
 		padding-left: 5%;
 	}
 	#paypal-info-block, #credit-info-block {
 		padding: 12px;
-		border: 1px solid gray;
+		border: 1px solid #d3d3d3;
 		border-radius: 3px;
 		margin: 5px;
 		#credit-image {
@@ -100,9 +131,13 @@ $error-red : #cc0000;
 			width: 25%;
 			text-align: center;
 		}
-		>img {
+		#paypal-logo {
+			display: inline-block;
 			width: 25%;
 			height: auto;
+			img {
+				width: 100%;
+			}
 		}
 		#paypal-email {
 			display: inline-block;
@@ -119,6 +154,38 @@ $error-red : #cc0000;
 			text-align: center;
 			cursor: pointer;
 		}
+		@media (max-width: 600px) {
+			#paypal-logo {
+				text-align: center;
+				width: 100%;
+				>img {
+					width: 100px;
+				}
+			}
+			#paypal-email {
+				width: 50%;
+			}
+			#credit-image, #masked-number {
+				display: inline-block;
+				width: 40%;
+			}
+			.change-payment-method {
+				margin-top: 5px;
+				width: 100%;
+			}
+		}
+	}
+	@media (max-width: 600px) {
+		#paypal-info-block {
+			.change-payment-method {
+				width: 50%;
+			}
+		}
+		#credit-info-block {
+			.change-payment-method {
+				width: 100%;
+			}
+		}
 	}
 }
 
@@ -127,13 +194,16 @@ $error-red : #cc0000;
 #inputs-wrapper {
 	> div {
 		display: inline-block;
-		width: 80%;
-		margin-left: 10%;
-		&:nth-child(2), &:nth-child(3) {
-			width: 37.5%;
-		}
-		&:nth-child(3) {
-			margin-left: 5%;
+		width: 100%;
+		@media (min-width: 600px) {
+			width: 80%;
+			margin-left: 10%;
+			&:nth-child(2), &:nth-child(3) {
+				width: 37.5%;
+			}
+			&:nth-child(3) {
+				margin-left: 5%;
+			}
 		}
 		> span {
 			display: inline-block;
@@ -178,12 +248,15 @@ $error-red : #cc0000;
 		margin-left: 5%;
 		margin-bottom: 10px;
 		text-align: center;
+		cursor: pointer;
 		&:nth-child(1), &:nth-child(4) {
 			margin-left: 0%;
 		}
 	}
 	.gift-total-selected {
-		border: 1px solid red;
+		border: 1px solid #2e6da4;
+		background-color: #337ab7;
+		color: #fff;
 	}
 	#total-other {
 		height: 40px;
@@ -212,11 +285,18 @@ $error-red : #cc0000;
 	width: 80%;
 	margin: auto;
 	margin-bottom: 10px;
+	@media (max-width: 600px) {
+		width: 100%;
+	}
 }
 
 #how-much {
 	text-align: center;
 	margin-top: 10px;
+	font-family: "Rokkitt";
+	@media (max-width: 600px) {
+		font-size: 0.8em;
+	}
 }
 
 #totals div {
@@ -272,12 +352,15 @@ $error-red : #cc0000;
 	#designation-other {
 		display: none;
 		height: 30px;
-		//width: 50%;
-		margin-top: 10px;
-		margin-bottom: 0px;
+		width: 50%;
+		margin-bottom: 10px;
+		@media (max-width: 600px) {
+			width: 80%;
+		}
 	}
 	#designate-select {
 		height: 30px;
+		margin-bottom: 10px;
 	}
 }
 
@@ -285,8 +368,9 @@ $error-red : #cc0000;
 
 #payment-container {
 	display: none;
-	h4 {
+	h3 {
 		text-align: center;
+		font-family: "Rokkitt";
 	}
 	#card-payment {
 		.hosted {
@@ -305,6 +389,10 @@ $error-red : #cc0000;
 		}
 		> div {
 			display: inline-block;
+			// width: 100%;
+			// label {
+			// 	padding-top: 5px;
+			// }
 			width: 37.5%;
 			margin-left: 10%;
 			margin-top: 10px;
@@ -313,6 +401,16 @@ $error-red : #cc0000;
 			}
 			&:nth-child(3) {
 				margin-left: 5%;
+			}
+			@media (max-width: 600px) {
+				width: 47.5%;
+				margin-left: 0%;
+				&:first-child {
+					width: 100%;
+				}
+				&:nth-child(3) {
+					margin-left: 5%;
+				}
 			}
 		}
 	}
@@ -344,8 +442,10 @@ $error-red : #cc0000;
 #payment-details {
 	#paypal-info, #card-info {
 		display: none;
-		width: 80%;
-		margin-left: 10%;
+		@media (min-width: 600px) {
+			width: 80%;
+			margin-left: 10%;
+		}
 		background: rgba(255, 255, 255, 0.86);
 		border: 1px solid #ebebeb;
 		box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
@@ -395,7 +495,8 @@ $error-red : #cc0000;
 #recurring {
 	p {
 		text-align: center;
-		font-size: 1.1em;
+		font-size: 1.6em;
+		font-family: "Rokkitt";
 	}
 	> div {
 		display: inline-block;
@@ -410,9 +511,17 @@ $error-red : #cc0000;
 		&:nth-child(2) {
 			margin-left: 15%;
 		}
+		@media (max-width: 600px) {
+			width: 25%;
+			&:nth-child(2) {
+				margin-left: 5%;
+			}
+		}
 	}
 	.frequency-selected {
-		border: 1px solid red;
+		border: 1px solid #2e6da4;
+		background-color: #337ab7;
+		color: #fff;
 	}
 }
 
