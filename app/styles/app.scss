@@ -2,3 +2,24 @@
 @import "utilities";
 @import "material";
 @import "colors";
+
+/* fonts */
+@import 'https://fonts.googleapis.com/css?family=Roboto+Slab:100,300';
+
+/* giftwrap normalizer */
+
+body {
+	font-family: 'Roboto Slab', serif;
+}
+
+/* universal mixin classes */
+
+.uni-background-cover {
+  -webkit-background-size:cover;
+  -moz-background-size:cover;
+  -o-background-size:cover;
+  -ms-background-size:cover;
+  background-size:cover;
+}
+
+.rb {border: 1px solid red}

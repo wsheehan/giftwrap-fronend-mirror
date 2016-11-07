@@ -1,18 +1,12 @@
 #universal-header {
 	height: 60px;
-	margin-bottom: 60px;
-	background-color: #fafafa;
-	border-bottom: 1px solid #e5e5e5;
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
 	#user-links {
 		cursor: pointer;
 		position: fixed;
 		top: 10px;
 		padding: 5px 10px;
 		a {
+			// color: white;
 			margin-top: 10px;
 			padding: 0 5px;
 		}
