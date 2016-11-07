@@ -1,0 +1,47 @@
+{{outlet}}
+
+<div class="container">
+	<div class="row">
+		<div id="donor-list-index">
+			<h3>Choose a Donor List</h3>
+			<div id="search-donor-lists">
+				{{input value=searchQuery key-up="searchDonorLists" placeholder="search"}}
+			</div>
+			<div id="donor-list-table-header">
+				<div>Title</div><div>Description</div>
+			</div>
+			<div id="donor-list-table">
+				{{#each donorLists as |donorList|}}
+					<div class="donor-list-row" {{action "chooseDonorList" donorList}} id="donor-list-id-{{donorList.id}}">
+						<div class="donor-list-title">{{donorList.title}}</div><div class="donor-list-description">{{donorList.description}}</div>
+					</div>
+				{{/each}}
+			</div>
+			{{#if chosenDonorList.title}}
+				<h3>Chosen Donor List</h3>
+				<div class="donor-list-row" id="chosen-donor-list">
+					<div class="donor-list-title">{{chosenDonorList.title}}</div><div class="donor-list-description">{{chosenDonorList.description}}</div>
+				</div>
+			{{/if}}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-4 col-sm-offset-2" id="text-create">
+			<div>
+				<label>Text Body {{newText.donorListId}}</label><br>
+				{{ textarea value=newText.body class="form-control" rows="12" }}
+			</div>
+		</div>
+
+		<div class="col-sm-4">
+			<div id="text-preview">
+				<div id="iphone-time">{{ currentTime.time }}</div>
+				<div id="iphone-date">{{ currentTime.day }}</div>
+				<p><span>+1 802-359-7135</span><br>{{newText.body}} {{#if newText.body}}<br><a src="https://giftwrap.io/forms/1">giftwrap.io/forms/1</a>{{/if}}</p>
+			</div>
+		</div>
+	</div>
+	<div class="row" id="btn-wrapper">
+		<button class="btn btn-lg btn-success" {{action 'sendTexts' newText}}>Send Texts</button>
+	</div>
+</div>

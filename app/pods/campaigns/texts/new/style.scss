@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300');
+
+#donor-list-index {
+	width: 70%;
+	margin-left: 15%;
+	margin-bottom: 25px;
+	h3 {
+		text-align: center;
+	}
+	#search-donor-lists {
+		text-align: center;
+		input {
+			height: 35px;
+			width: 250px;
+			padding: 10px;
+		}
+	}		
+	.donor-list-title, #donor-list-table-header div:first-child {
+		display: inline-block;
+		vertical-align: top;
+		width: 30%;
+		text-align: center;
+	}
+	.donor-list-description, #donor-list-table-header div:nth-child(2) {
+		display: inline-block;
+		vertical-align: top;
+		width: 70%;
+		margin-left: -1px;
+	}
+	#donor-list-table-header { 
+		border: 1px dotted black;
+		margin-top: 20px;
+		font-size: 1.4em;
+		padding: 10px;
+		>div {
+			text-align: center;
+		}
+	}
+	#donor-list-table {
+		border: 1px solid red;
+		height: 300px;
+		overflow: scroll;
+	}
+	.donor-list-row {
+		&:hover {
+			border: 1px solid blue;
+		}
+		>div {
+			border: 1px solid gray;
+			border-top: none;
+			height: 60px;
+			padding: 10px;
+		}
+	}
+	#chosen-donor-list {
+		border-top: 1px solid gray
+	}
+}
+
+#text-create {
+	margin-top: 15px;
+	label {
+		font-size: 1.3em;
+	}
+}
+
+#text-preview {
+	font-family: 'Source Sans Pro';
+	min-height: 300px;
+	border: 1px solid black;
+	margin-top: 20px;
+	border-radius: 3px;
+	border: 6px solid #141414;
+	border-top: 35px solid #141414;
+	border-bottom: none;
+	border-radius: 20px 20px 0px 0px;
+	background-image: url('https://s3.amazonaws.com/giftwrap/iphone-background.jpg');
+	#iphone-time, #iphone-date {
+		text-align: center;
+		color: white;
+		font-size: 1.5em;
+	}
+	#iphone-time {
+		font-size: 3.5em;
+		letter-spacing: 5px;
+	}
+	p {
+		border: 1px solid gray;
+		margin: 15px;
+		padding: 10px;
+		border-radius: 10px;
+		color: #202020;
+		background-color: #fff;
+		font-weight: bold;
+		min-height: 30px;
+		font-size: 1.2em;
+		border-top: 15px solid #e4e4e4;
+		span {
+			font-family: Helvetica;
+		}
+	}
+}
+
+#btn-wrapper {
+	text-align: center;
+	margin-top: 15px;
+}
