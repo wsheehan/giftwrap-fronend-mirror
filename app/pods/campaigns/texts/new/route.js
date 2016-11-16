@@ -12,7 +12,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 		controller.set("currentTime", {"day": Moment().format('dddd, MMMM D'),"time": Moment().format("h:mm")});
 		controller.set("donorLists", model);
 		controller.set("searchQuery", "");
-		controller.set("chosenDonorList", {});
+		controller.set("chosenDonorList", {})
 	},
 	actions: {
 		searchDonorLists(e) {
@@ -33,8 +33,17 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 				}
 			});
 		},
-		sendTexts(newText) {
-			console.log(newText)
+		sendTexts(newText, chosenDonorList) {
+			const donorList = this.get('store').peekRecord('donor-list', chosenDonorList.id)
+			let text = this.get('store').createRecord("campaigns/text", Object.assign(newText, {
+				donorList: donorList,
+				user: this.get('session.currentUser')
+			}));
+			text.save().then((campaign) => {
+				alert("Texts Sent!!")
+			}, (error) => {
+				alert(error.errors.msg)
+			});
 		}
 	}
 });
