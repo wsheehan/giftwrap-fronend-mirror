@@ -9,10 +9,10 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 	},
 	setupController(controller, model) {
 		controller.set("newText", {});
-		controller.set("currentTime", {"day": Moment().format('dddd, MMMM D'),"time": Moment().format("h:mm")});
+		controller.set("currentTime", {"day": new Moment().format('dddd, MMMM D'),"time": new Moment().format("h:mm")});
 		controller.set("donorLists", model);
 		controller.set("searchQuery", "");
-		controller.set("chosenDonorList", {})
+		controller.set("chosenDonorList", {});
 	},
 	actions: {
 		searchDonorLists(e) {
@@ -28,21 +28,22 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 			}).then(function(response) {
 				if (response.search) {
 					// Scroll the index to the Donor List given by search result
-					const d = document.getElementById("donor-list-id-" + response.search.id)
+					const d = document.getElementById("donor-list-id-" + response.search.id);
 					document.getElementById('donor-list-table').scrollTop = d.offsetTop - 220;
 				}
 			});
 		},
 		sendTexts(newText, chosenDonorList) {
-			const donorList = this.get('store').peekRecord('donor-list', chosenDonorList.id)
+			const donorList = this.get('store').peekRecord('donor-list', chosenDonorList.id);
 			let text = this.get('store').createRecord("campaigns/text", Object.assign(newText, {
 				donorList: donorList,
 				user: this.get('session.currentUser')
 			}));
 			text.save().then((campaign) => {
-				alert("Texts Sent!!")
+				console.log(campaign.id);
+				alert("Texts Sent!!");
 			}, (error) => {
-				alert(error.errors.msg)
+				alert(error.errors.msg);
 			});
 		}
 	}
