@@ -39,9 +39,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 				donorList: donorList,
 				user: this.get('session.currentUser')
 			}));
-			text.save().then(function(text) {
-				console.log(text.get('campaign').content.id)
-				alert("Texts Sent!!");
+			text.save().then((text) => {
+				this.transitionTo('/campaigns/' + text.get('campaign').content.id)
 			}, (error) => {
 				alert(error.errors.msg);
 			});
