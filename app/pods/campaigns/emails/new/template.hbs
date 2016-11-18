@@ -1,0 +1,28 @@
+{{outlet}}
+
+<div class="container">
+	<div class="row">
+		{{#donor-list-index donorLists=donorLists chosenDonorList=chosenDonorList chooseDonorList=(action "chooseDonorList")}}
+		{{/donor-list-index}}
+	</div>
+	<div class="row">
+		<div class="col-sm-4 col-sm-offset-2" id="text-create">
+			<div>
+				<label>Subject Line</label><br>
+				{{input value=newEmail.subject class="form-control"}}
+				<label>Header Image</label><br>
+				{{input type="file" value=newEmail.image}}
+				<label>Body {{newEmail.donorListId}}</label><br>
+				{{textarea value=newEmail.body class="form-control" rows="12"}}
+			</div>
+		</div>
+
+		<div class="col-sm-4">
+			<div id="email-preview">
+			</div>
+		</div>
+	</div>
+	<div class="row" id="btn-wrapper">
+		<button class="btn btn-lg btn-success" {{action 'sendEmails' newEmail chosenDonorList}}>Send Texts</button>
+	</div>
+</div>

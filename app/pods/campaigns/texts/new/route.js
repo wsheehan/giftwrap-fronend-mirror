@@ -40,7 +40,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 				user: this.get('session.currentUser')
 			}));
 			text.save().then((text) => {
-				this.transitionTo('/campaigns/' + text.get('campaign').content.id)
+				this.transitionTo('/campaigns/' + text.get('campaign').content.id);
 			}, (error) => {
 				alert(error.errors.msg);
 			});
