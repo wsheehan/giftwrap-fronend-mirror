@@ -1,0 +1,24 @@
+{{yield}}
+
+<div id="donor-list-index">
+	<h3>Choose a Donor List</h3>
+	<div id="search-donor-lists">
+		{{input value=searchQuery key-up="searchDonorLists" placeholder="search"}}
+	</div>
+	<div id="donor-list-table-header">
+		<div>Title</div><div>Description</div>
+	</div>
+	<div id="donor-list-table">
+		{{#each donorLists as |donorList|}}
+			<div class="donor-list-row" {{action "chooseDonorList" donorList}} id="donor-list-id-{{donorList.id}}">
+				<div class="donor-list-title">{{donorList.title}}</div><div class="donor-list-description">{{donorList.description}}</div>
+			</div>
+		{{/each}}
+	</div>
+	{{#if chosenDonorList.title}}
+		<h3>Chosen Donor List</h3>
+		<div class="donor-list-row" id="chosen-donor-list">
+			<div class="donor-list-title">{{chosenDonorList.title}}</div><div class="donor-list-description">{{chosenDonorList.description}}</div>
+		</div>
+	{{/if}}
+</div>
