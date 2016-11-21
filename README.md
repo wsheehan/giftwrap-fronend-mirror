@@ -5,7 +5,7 @@ A short introduction of this app could easily go here.
 
 ## Proxied Server
 
-Use the following format: `ember s --proxy=https://localhost:3000 --insecure-proxy`
+Use the following format: `ember s --proxy=https://localhost:3000 --secure-proxy=false`
 
 ## Prerequisites
 
