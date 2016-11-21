@@ -2,16 +2,20 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'giving',
-    podModulePrefix: 'giving/pods',
+    modulePrefix: 'giftwrap',
+    podModulePrefix: 'giftwrap/pods',
     environment: environment,
-    baseURL: '/',
+    rootURL: '/',
     locationType: 'auto',
     API_NAMESPACE: '/api/v1',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
+      },
+      EXTEND_PROTOTYPES: {
+        // Prevent Ember Data from overriding Date.parse.
+        Date: false
       }
     },
 
@@ -32,7 +36,6 @@ module.exports = function(environment) {
 
   if (environment === 'test') {
     // Testem prefers this...
-    ENV.baseURL = '/';
     ENV.locationType = 'none';
 
     // keep test console output quieter
