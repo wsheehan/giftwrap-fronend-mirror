@@ -9,5 +9,7 @@ export default Model.extend({
 	phoneNumber: attr('string'),
 	giftFrequency: attr('string'),
 	gifts: hasMany('gift'),
-	client_id: attr('string')
+	client_id: attr('string'),
+	affiliation: attr('string'),
+	classYear: attr('string')
 });

@@ -30,6 +30,10 @@ Router.map(function() {
   this.route('forms', function() {
     this.route('show', { path: "/:client_id" });
   });
+
+  this.route('donor-lists', function() {
+    this.route('new');
+  });
 });
 
 export default Router;
