@@ -1,0 +1,68 @@
+{{outlet}}
+
+<div class="flex-container">
+	<div id="donor-selection">
+		<div id="donor-search">
+			{{input key-up="searchDonors" placeholder="search" class="material-input"}}
+			<div id="donor-search-results">
+				{{#each donorSearchResults as |donor|}}
+					{{donors/individual-row donor=donor checkbox=true chooseDonor=(action "chooseDonor")}}
+				{{/each}}
+			</div>
+		</div>
+		<div id="donor-table">
+			<div id="donor-table-header">
+				<div>
+					<div class="donor-checkbox"></div>
+					<div>First Name</div>
+					<div>Last Name</div>
+					<div>Affiliation</div>
+					<div>Class Year</div>
+				</div>
+			</div>
+			{{#each donors as |donor|}}
+				{{donors/individual-row donor=donor checkbox=true chooseDonor=(action "chooseDonor")}}
+			{{/each}}
+			<div id="donor-table-footer">
+				<span>Rows per page:
+					<select value={{size}} onchange={{action "sizeChange"}}>
+						<option value="5">5</option>
+						<option value="10">10</option>
+						<option value="25">25</option>
+					</select>
+				</span>
+				<span id="donor-table-page-control">
+					<span></span>
+					<span {{action "nextDonors" page -1}}>&lt;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span {{action "nextDonors" page 1}}> &gt;</span> 
+				</span>
+			</div>
+		</div>
+	</div>
+	<div id="donor-list-new">
+		<p>Selected Donors</p>
+		<div>
+			<label>Title</label><br>
+			{{input value=newDonorList.title class="material-input"}}
+		</div>
+		{{#if selectedDonors}}
+			<div id="selected-donors">
+				{{#each selectedDonors as |donor|}}
+					{{donors/individual-row donor=donor removeDonor=(action "removeDonor")}}
+				{{/each}}
+			</div>
+		{{else}}
+			<div id="selected-donors-empty">
+				<span>You Haven't Selected Any Donors</span>
+			</div>
+		{{/if}}
+		<div>
+			<label>List Description</label><br>
+			{{textarea value=newDonorList.description class="material-input"}}
+		</div>
+		<div class="centering-container">
+			<button class="mat-button" {{action "createDonorList" selectedDonors newDonorList}}>CREATE LIST</button>
+		</div>
+	</div>
+</div>
+
+
