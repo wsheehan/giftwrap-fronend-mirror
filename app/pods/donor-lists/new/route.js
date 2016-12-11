@@ -17,15 +17,15 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 		controller.set("newDonorList", {});
 	},
 	actions: {
-		nextDonors(page, offset) {
-			this.set("controller.page", page + offset);
+		nextDonors(offset) {
+			this.incrementProperty("controller.page", offset);
 			const donors = this.get('store').query('donor',{
 				page: {
 					number: this.get("controller.page"),
 					size: this.get("controller.size")
 				}
 			});
-			this.set("controller.donors", donors);			
+			this.set("controller.donors", donors);
 		},
 		createDonorList(donors, newDonorList) {
 			let donorList = this.get('store').createRecord('donor-list', Object.assign(newDonorList, {
@@ -37,5 +37,5 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 				console.log(error);
 			})
 		}
-	}	
+	}
 });

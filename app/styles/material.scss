@@ -1,6 +1,6 @@
 @import "colors";
 
-.material-input {
+.mat-input {
 	padding-left: 10px;
 	background: rgba(255, 255, 255, 0.86);
 	border: 1px solid #ebebeb;
@@ -14,12 +14,25 @@
 	}
 }
 
-.mat-button {
+@mixin button() {
 	background-color: $button-blue;
 	box-shadow: 0 1px 1px rgba(0,0,0,0.12), 0 1px 1px rgba(0,0,0,0.24);
 	border: none;
 	color: white;
-	font-size: 1.2em;
 	border-radius: 2px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+
+.mat-button {
+	@include button();
+	font-size: 1.2em !important;
 	padding: 9px 18px;
+}
+
+.mat-button-sm {
+	@include button();
+	font-size: 0.9em !important;
+	padding: 6px 12px;
 }

@@ -1,0 +1,63 @@
+@import 'app/styles/colors';
+
+#search-donor-lists {
+  text-align: center;
+  margin-top: 10px;
+  .donor-list-table-row {
+    padding: 10px;
+    >div {
+      border: none;
+      box-shadow: 0 1px 1px rgba(0,0,0,0.12), 0 1px 1px rgba(0,0,0,0.24);
+      padding: 10px;
+      text-align: left;
+    }
+  }
+}
+
+#donor-list-index {
+  padding: 5px;
+	margin: 10px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  #donor-list-table-header {
+    color: $mid-black;
+  }
+  #donor-list-table-footer {
+    text-align: right;
+    color: $mid-black;
+    padding-top: 5px;
+  }
+}
+
+.donor-list-table-row > div, #donor-list-table-header {
+  display: flex;
+  cursor: pointer;
+  padding: 5px;
+  border-bottom: 1px solid $light-gray;
+  > div {
+    flex: 5;
+  }
+  .donor-list-checkbox {
+    flex: 1;
+    text-align: center;
+  }
+}
+
+#chosen-donor-lists .donor-list-table-row {
+  margin: 10px;
+  >div {
+    padding: 10px;
+    border: none;
+    font-size: 1.2em;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  }
+}
+
+#no-chosen-donor-list {
+  background: $light-gray;
+  color: $mid-black;
+  padding: 12px;
+  text-align: center;
+  font-size: 1.2em;
+  margin: 15px;
+  border-radius: 5px;
+}

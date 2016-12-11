@@ -2,27 +2,48 @@
 
 <div class="container">
 	<div class="row">
-		{{#donor-list-index donorLists=donorLists chosenDonorList=chosenDonorList chooseDonorList=(action "chooseDonorList")}}
-		{{/donor-list-index}}
-	</div>
-	<div class="row">
-		<div class="col-sm-4 col-sm-offset-2" id="text-create">
-			<div>
-				<label>Subject Line</label><br>
-				{{input value=newEmail.subject class="form-control"}}
-				<label>Header Image</label><br>
-				{{input type="file" value=newEmail.image}}
-				<label>Body {{newEmail.donorListId}}</label><br>
-				{{textarea value=newEmail.body class="form-control" rows="12"}}
-			</div>
+		<div class="col-sm-8 col-sm-offset-2">
+			{{donor-list-index
+				donorLists=donorLists
+				chosenDonorList=chosenDonorList
+				donorListSearchResults=donorListSearchResults
+				chooseDonorList=(action "chooseDonorList")
+				nextDonorLists=(action "nextDonorLists" page offset)
+				sizeChange=(action "sizeChange")
+				searchDonorLists=(action "searchDonorLists")
+			}}
 		</div>
+	</div>
 
-		<div class="col-sm-4">
-			<div id="email-preview">
+	<div class="row">
+		<div id="email-create" class="col-sm-4 col-sm-offset-1">
+			<label>Subject Line</label><br>
+			{{input value=newEmail.subject class="mat-input"}}
+			{{#forms/image-field previewID="email-image-preview"}}
+			{{/forms/image-field}}
+			<label>Body {{newEmail.donorListId}}</label><br>
+			{{textarea value=newEmail.body class="mat-input" rows="12"}}
+			<div id="btn-wrapper">
+				<button class="mat-button" {{action 'sendEmails' newEmail chosenDonorList}}>SEND EMAILS</button>
 			</div>
 		</div>
-	</div>
-	<div class="row" id="btn-wrapper">
-		<button class="btn btn-lg btn-success" {{action 'sendEmails' newEmail chosenDonorList}}>Send Texts</button>
+		<div id="email-preview" class="col-sm-6">
+				<div id="email-subject"></div>
+				<img id="email-image-preview">
+				<p>Dear John,</p>
+				<p id="email-body">
+					{{#if newEmail.body}}
+						{{newEmail.body}}
+					{{else}}
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					{{/if}}
+				</p>
+				<div id="email-signoff">
+					<p>
+						{{currentUser.firstName}} {{currentUser.lastName}}<br>
+						{{currentUser.title}}
+					</p>
+				</div>
+		</div>
 	</div>
 </div>

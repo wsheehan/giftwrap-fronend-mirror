@@ -1,0 +1,16 @@
+{{yield}}
+
+<div {{action chooseCurrentDonorList donorList}} class="donor-list-id-{{donorList.id}}">
+
+  {{#if checkbox}}
+		<div class="donor-list-checkbox">
+			<span class="glyphicon glyphicon-plus"></span>
+		</div>
+	{{else}}
+    <div class="donor-list-checkbox"></div>
+  {{/if}}
+
+  <div>{{donorList.title}}</div>
+  <div>{{donorList.description}}</div>
+
+</div>

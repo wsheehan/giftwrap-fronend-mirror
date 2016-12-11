@@ -8,7 +8,7 @@ export default ESASession.extend({
 	sessionToken: Ember.computed('isAuthenticated', 'session.content.authenticated.token', function() {
 		if (this.get('isAuthenticated')) {
 			return this.get('session.content.authenticated.token');
-		}	
+		}
 	}),
 
 	currentUser: Ember.computed('isAuthenticated', 'session.content.authenticated.user', function() {
@@ -20,8 +20,8 @@ export default ESASession.extend({
 						id: user.user_id,
 						type: 'user',
 						attributes: {
-							firstName: user.firstName,
-							lastName: user.lastName,
+							firstName: user.first_name,
+							lastName: user.last_name,
 							email: user.email
 						}
 					}

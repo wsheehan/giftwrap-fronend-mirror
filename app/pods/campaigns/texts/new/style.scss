@@ -1,61 +1,61 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300');
 
-#donor-list-index {
-	width: 70%;
-	margin-left: 15%;
-	margin-bottom: 25px;
-	h3 {
-		text-align: center;
-	}
-	#search-donor-lists {
-		text-align: center;
-		input {
-			height: 35px;
-			width: 250px;
-			padding: 10px;
-		}
-	}		
-	.donor-list-title, #donor-list-table-header div:first-child {
-		display: inline-block;
-		vertical-align: top;
-		width: 30%;
-		text-align: center;
-	}
-	.donor-list-description, #donor-list-table-header div:nth-child(2) {
-		display: inline-block;
-		vertical-align: top;
-		width: 70%;
-		margin-left: -1px;
-	}
-	#donor-list-table-header { 
-		border: 1px dotted black;
-		margin-top: 20px;
-		font-size: 1.4em;
-		padding: 10px;
-		>div {
-			text-align: center;
-		}
-	}
-	#donor-list-table {
-		border: 1px solid red;
-		height: 300px;
-		overflow: scroll;
-	}
-	.donor-list-row {
-		&:hover {
-			border: 1px solid blue;
-		}
-		>div {
-			border: 1px solid gray;
-			border-top: none;
-			height: 60px;
-			padding: 10px;
-		}
-	}
-	#chosen-donor-list {
-		border-top: 1px solid gray
-	}
-}
+// #donor-list-index {
+// 	width: 70%;
+// 	margin-left: 15%;
+// 	margin-bottom: 25px;
+// 	h3 {
+// 		text-align: center;
+// 	}
+// 	#search-donor-lists {
+// 		text-align: center;
+// 		input {
+// 			height: 35px;
+// 			width: 250px;
+// 			padding: 10px;
+// 		}
+// 	}
+// 	.donor-list-title, #donor-list-table-header div:first-child {
+// 		display: inline-block;
+// 		vertical-align: top;
+// 		width: 30%;
+// 		text-align: center;
+// 	}
+// 	.donor-list-description, #donor-list-table-header div:nth-child(2) {
+// 		display: inline-block;
+// 		vertical-align: top;
+// 		width: 70%;
+// 		margin-left: -1px;
+// 	}
+// 	#donor-list-table-header {
+// 		border: 1px dotted black;
+// 		margin-top: 20px;
+// 		font-size: 1.4em;
+// 		padding: 10px;
+// 		>div {
+// 			text-align: center;
+// 		}
+// 	}
+// 	#donor-list-table {
+// 		border: 1px solid red;
+// 		height: 300px;
+// 		overflow: scroll;
+// 	}
+// 	.donor-list-row {
+// 		&:hover {
+// 			border: 1px solid blue;
+// 		}
+// 		>div {
+// 			border: 1px solid gray;
+// 			border-top: none;
+// 			height: 60px;
+// 			padding: 10px;
+// 		}
+// 	}
+// 	#chosen-donor-list {
+// 		border-top: 1px solid gray
+// 	}
+// }
 
 #text-create {
 	margin-top: 15px;
