@@ -18,11 +18,17 @@
 	<div class="row">
 		<div id="email-create" class="col-sm-4 col-sm-offset-1">
 			<label>Subject Line</label><br>
-			{{input value=newEmail.subject class="mat-input"}}
-			{{#forms/image-field previewID="email-image-preview"}}
-			{{/forms/image-field}}
-			<label>Body {{newEmail.donorListId}}</label><br>
-			{{textarea value=newEmail.body class="mat-input" rows="12"}}
+			{{input value=newEmail.subject class="mat-input" id="email-subject"}}
+			<div id="email-subject-error" class="input-error-text"></div>
+
+			<label for="email-header-image" class="mat-button-sm">UPLOAD IMAGE</label>
+			<input type="file" id="email-header-image" class="image-input" onchange={{action "readImage"}}>
+			{{!-- {{forms/image-field previewID="email-image-preview"}} --}}
+
+			<div id="email-header-image-error" class="input-error-text"></div>
+			<label>Body</label><br>
+			{{textarea value=newEmail.body class="mat-input" rows="12" id="email-body"}}
+			<div id="email-body-error" class="input-error-text"></div>
 			<div id="btn-wrapper">
 				<button class="mat-button" {{action 'sendEmails' newEmail chosenDonorList}}>SEND EMAILS</button>
 			</div>

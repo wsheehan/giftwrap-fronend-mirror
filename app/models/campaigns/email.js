@@ -4,7 +4,7 @@ import { belongsTo, hasMany } from 'ember-data/relationships';
 
 export default Model.extend({
 	subject: attr('string'),
-	image: attr('string'),
+	headerImage: attr('string'),
 	body: attr('string'),
 	campaign: belongsTo('campaign'),
 	donorList: belongsTo('donor-list'),

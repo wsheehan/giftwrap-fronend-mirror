@@ -35,6 +35,20 @@ export default Ember.Controller.extend({
 			this.get('store').query('donor-list', { "q": e }).then((donorLists) => {
 				this.set('donorListSearchResults', donorLists);
 			});
-		}
+		},
+		readImage(previewID) {
+      let preview = document.getElementById('email-image-preview');
+      let file = document.getElementById('email-header-image').files[0];
+      let reader = new FileReader();
+
+      reader.addEventListener("load", () => {
+        preview.src = reader.result;
+				this.set("newEmail.headerImage", reader.result);
+      }, false);
+
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    }
 	}
 });

@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 @import url('https://fonts.googleapis.com/css?family=Rokkitt');
 
-$error-red : #cc0000; 
+$error-red : #cc0000;
 
 @mixin error-block() {
 	padding: 5px;
@@ -65,10 +65,6 @@ $error-red : #cc0000;
 // Global Input Styling
 .form-input, #card-payment .hosted, #total-other, #designation-other {
 	@include input-styling();
-}
-
-.input-error {
-	border: 1px solid $error-red !important;
 }
 
 .input-success {
@@ -318,7 +314,7 @@ $error-red : #cc0000;
 		> div {
 			text-align: center;
 			padding: 5px;
-		}	
+		}
 	}
 	input {
 		display: block;
@@ -427,7 +423,7 @@ $error-red : #cc0000;
 	margin: 10px;
 	border-radius: 4px;
 	border: 1px solid #EBCCD1;
-	background-color: #F2DEDE; 
+	background-color: #F2DEDE;
 	color: #A94442;
 }
 
@@ -537,11 +533,11 @@ $error-red : #cc0000;
 /* Media Queries */
 
 @media (min-width: 500px) {
-	#gift-type > div { 
-		width: 25%; 
+	#gift-type > div {
+		width: 25%;
 	}
-	#gift-type .first-radio { 
-		margin-left: 12.5%; 
+	#gift-type .first-radio {
+		margin-left: 12.5%;
 	}
 	#card-payment > div {
 		margin-left: calc(50% - 75px);
@@ -549,10 +545,10 @@ $error-red : #cc0000;
 }
 @media (max-width: 500px) {
 	#gift-type > div {
-		width: 30%; 
+		width: 30%;
 	}
-	#gift-type .first-radio { 
-		margin-left: 5%; 
+	#gift-type .first-radio {
+		margin-left: 5%;
 	}
 }
 
