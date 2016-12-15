@@ -1,24 +1,56 @@
 {{yield}}
 
+<div id="search-donor-lists">
+	{{input value=searchQuery key-up="searchDonorLists" placeholder="search" class="mat-input"}}
+	{{#each donorListSearchResults as |donorList| }}
+		{{donor-lists/individual-row
+			donorList=donorList
+			checkbox=true
+			chooseCurrentDonorList=(action "chooseDonorList" donorList)
+		}}
+	{{/each}}
+</div>
+
 <div id="donor-list-index">
-	<h3>Choose a Donor List</h3>
-	<div id="search-donor-lists">
-		{{input value=searchQuery key-up="searchDonorLists" placeholder="search"}}
-	</div>
 	<div id="donor-list-table-header">
-		<div>Title</div><div>Description</div>
+		<div class="donor-list-checkbox"></div>
+		<div>Title</div>
+		<div>Description</div>
 	</div>
 	<div id="donor-list-table">
 		{{#each donorLists as |donorList|}}
-			<div class="donor-list-row" {{action "chooseDonorList" donorList}} id="donor-list-id-{{donorList.id}}">
-				<div class="donor-list-title">{{donorList.title}}</div><div class="donor-list-description">{{donorList.description}}</div>
-			</div>
+			{{donor-lists/individual-row
+				donorList=donorList
+				checkbox=true
+				chooseCurrentDonorList=(action "chooseDonorList" donorList)
+			}}
 		{{/each}}
 	</div>
+	<div id="donor-list-table-footer">
+		<span>Rows per page:
+			<select value={{size}} onchange={{action "sizeChange"}}>
+				<option value="5">5</option>
+				<option value="10">10</option>
+				<option value="25">25</option>
+			</select>
+		</span>
+		<span id="donor-list-table-page-control">
+			<span></span>
+			<span {{action "nextDonorLists" page -1}}>&lt;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span {{action "nextDonorLists" page 1}}> &gt;</span>
+		</span>
+	</div>
+</div>
+
+<div id="chosen-donor-lists">
 	{{#if chosenDonorList.title}}
-		<h3>Chosen Donor List</h3>
-		<div class="donor-list-row" id="chosen-donor-list">
-			<div class="donor-list-title">{{chosenDonorList.title}}</div><div class="donor-list-description">{{chosenDonorList.description}}</div>
+		{{donor-lists/individual-row
+			donorList=chosenDonorList
+			chooseCurrentDonorList=(action "chooseDonorList" donorList)
+		}}
+	{{else}}
+		<div id="no-chosen-donor-list">
+			No Donor List Selected
 		</div>
+		<div id="no-chosen-donor-list-error" class="input-error-text"></div>
 	{{/if}}
 </div>

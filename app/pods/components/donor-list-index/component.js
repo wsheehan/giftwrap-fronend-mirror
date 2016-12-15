@@ -6,25 +6,19 @@ export default Ember.Component.extend({
 
 	actions: {
 		searchDonorLists(e) {
-			// Send search query
-			const token = this.get('session.sessionToken');
-			Ember.$.ajax({
-				url: "/api/v1/donor_lists/search",
-				type: "POST",
-				beforeSend: function(xhr) {
-					xhr.setRequestHeader('Authorization', "Bearer " + token); // Auth
-				},
-				data: { "search": { "q": e } }
-			}).then(function(response) {
-				if (response.search) {
-					// Scroll the index to the Donor List given by search result
-					const d = document.getElementById("donor-list-id-" + response.search.id);
-					document.getElementById('donor-list-table').scrollTop = d.offsetTop - 220;
-				}
-			});
+			this.sendAction("searchDonorLists", e);
 		},
 		chooseDonorList(donorList) {
 			this.sendAction("chooseDonorList", donorList);
+		},
+		removeDonorList(donorList) {
+			this.sendAction("removeDonorList", donorList);
+		},
+		nextDonorLists(page, offset) {
+			this.sendAction("nextDonorLists", page, offset);
+		},
+		sizeChange(e) {
+			this.sendAction("sizeChange", e);
 		}
 	}
 });

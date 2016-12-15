@@ -1,0 +1,46 @@
+@import "app/styles/colors";
+
+#email-create {
+  label {
+    font-size: 1.3em;
+  }
+  input, textarea {
+    width: 100%;
+  }
+  textarea {
+    height: 250px;
+    padding: 10px;
+  }
+  .image-input {
+    width: 0.1px;
+  	height: 0.1px;
+  	opacity: 0;
+  	overflow: hidden;
+  	position: absolute;
+  	z-index: -1;
+  }
+}
+
+#email-preview {
+  img {
+    display: block;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    background-color: $light-gray;
+  }
+  p {
+    font-size: 1.3em;
+    padding: 15px 15px;
+  }
+  #email-body {
+    padding-top: 0px;
+    text-indent: 8%;
+    line-height: 1.5em;
+  }
+  #email-signoff {
+    p {
+      text-align: center;
+    }
+  }
+}

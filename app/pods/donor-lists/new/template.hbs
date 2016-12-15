@@ -3,7 +3,7 @@
 <div class="flex-container">
 	<div id="donor-selection">
 		<div id="donor-search">
-			{{input key-up="searchDonors" placeholder="search" class="material-input"}}
+			{{input key-up="searchDonors" placeholder="search" class="mat-input"}}
 			<div id="donor-search-results">
 				{{#each donorSearchResults as |donor|}}
 					{{donors/individual-row donor=donor checkbox=true chooseDonor=(action "chooseDonor")}}
@@ -33,7 +33,7 @@
 				</span>
 				<span id="donor-table-page-control">
 					<span></span>
-					<span {{action "nextDonors" page -1}}>&lt;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span {{action "nextDonors" page 1}}> &gt;</span> 
+					<span {{action "nextDonors" -1}}>&lt;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span {{action "nextDonors" 1}}> &gt;</span>
 				</span>
 			</div>
 		</div>
@@ -42,7 +42,7 @@
 		<p>Selected Donors</p>
 		<div>
 			<label>Title</label><br>
-			{{input value=newDonorList.title class="material-input"}}
+			{{input value=newDonorList.title class="mat-input"}}
 		</div>
 		{{#if selectedDonors}}
 			<div id="selected-donors">
@@ -57,12 +57,10 @@
 		{{/if}}
 		<div>
 			<label>List Description</label><br>
-			{{textarea value=newDonorList.description class="material-input"}}
+			{{textarea value=newDonorList.description class="mat-input"}}
 		</div>
 		<div class="centering-container">
 			<button class="mat-button" {{action "createDonorList" selectedDonors newDonorList}}>CREATE LIST</button>
 		</div>
 	</div>
 </div>
-
-

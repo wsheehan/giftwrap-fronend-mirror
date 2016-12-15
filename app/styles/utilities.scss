@@ -1,9 +1,38 @@
 // Utility Classes for entire App
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
-.flex-container {
-	display: flex;
+// Globals
+body {
+	font-family: 'Roboto', sans-serif !important;
 }
 
+// Forms
+.input-error {
+	border: 1px solid $error-red !important;
+}
+.input-error-text {
+	text-align: center;
+	font-size: 0.8em;
+	color: $error-red;
+}
+
+
+////////////////////////////
+//    Flexbox Classes	   //
+///////////////////////////
+// .flex-container {
+// 	display: flex;
+// 	justify-content: space-between;
+// }
+//
+// $flex-width: flex !default;
+// @for $i from 1 through 12 {
+// 	.#{$flex-width}-#{$i} {
+// 		width: calc(100%/$i);
+// 	}
+// }
+
+// Other
 .centering-container {
 	text-align: center;
 }
