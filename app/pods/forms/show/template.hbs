@@ -1,17 +1,17 @@
-<div id="form-background" class="hide-mobile">
-	<img src="https://s3.amazonaws.com/giving-gael/public/ransom_sailing.jpg" class="image-fit-screen">
-</div>
+<div id="form-background" class="hide-mobile"></div>
 
 <form id="form">
 
-	<div id="seal">
+	{{!-- <div id="seal">
 		<img src="https://www.breakthroughmiami.org/portal/image/image_gallery?uuid=3ad8007b-b5a2-4acc-87aa-e6f393558ff5&groupId=660594&t=1388532405015">
+	</div> --}}
+
+	<div id="form-header">
+		<img src="https://s3.amazonaws.com/giftwrap/ransom_sailing.jpg">
+		<span>Give to {{ client.name }}</span>
 	</div>
 
-	<div id="header">
-		<h1>Give to {{ client.name }}</h1>
-	</div>
-
+	<div id="form-content">
 	{{#if donor}}
 		<div id="donor-info">
 			<h4 id="welcome-back">Welcome Back {{ donor.firstName }} {{ donor.lastName }}!</h4>
@@ -33,29 +33,32 @@
 			{{#unless donor.phoneNumber}}
 			<div>
 				<label for="donor-phone-number" class="form-input-label">Cell Number</label><br>
-				<span>+1</span>{{input id="donor-phone-number" type="number" class="form-input" value=donor.phoneNumber }}
-				<div id="donor-phone-number-error" class="error"></div>
+				<span>+1</span>{{input id="donor-phone-number" type="number" class="mat-input" value=donor.phoneNumber }}
+				<div id="donor-phone-number-error" class="mat-input-error"></div>
 			</div>
 			{{/unless}}
 		</div>
 	{{else}}
 		<div id="inputs-wrapper">
-			<div>
-				<label for="donor-email" class="form-input-label">Email</label><br>
-				{{input id="donor-email" class="form-input" value=newDonor.email focus-out="validateEmail"}}
-				<div id="donor-email-error" class="error"></div>
-			</div><div>
-				<label for="donor-first-name" class="form-input-label">First Name</label><br>
-				{{input id="donor-first-name" class="form-input" value=newDonor.firstName}}
-				<div id="donor-first-name-error" class="error"></div>
-			</div><div>
-				<label for="donor-last-name" class="form-input-label">Last Name</label><br>
-				{{input id="donor-last-name" class="form-input" value=newDonor.lastName}}
-				<div id="donor-last-name-error" class="error"></div>
-			</div><div>
-				<label for="donor-phone-number" class="form-input-label">Cell Number</label><br>
-				<span>+1</span>{{input id="donor-phone-number" class="form-input" value=newDonor.phoneNumber type="number"}}
-				<div id="donor-phone-number-error" class="error"></div>
+			<div class="mat-input-group">
+				{{input id="donor-email" class="mat-input mat-input-valid" value=newDonor.email required="required"}}
+				<label for="donor-email" class="form-input-label">Email</label>
+				<div id="donor-email-error" class="mat-input-error"></div>
+			</div>
+			<div class="mat-input-group">
+				{{input id="donor-first-name" type="text" class="mat-input mat-input-valid" value=newDonor.firstName required="required"}}
+				<label for="donor-first-name" class="form-input-label">First Name</label>
+				<div id="donor-first-name-error" class="mat-input-error"></div>
+			</div>
+			<div class="mat-input-group">
+				{{input id="donor-last-name" type="text" class="mat-input mat-input-valid" value=newDonor.lastName required="required"}}
+				<label for="donor-last-name" class="form-input-label">Last Name</label>
+				<div id="donor-last-name-error" class="mat-input-error"></div>
+			</div>
+			<div class="mat-input-group">
+				{{input id="donor-phone-number" type="number" class="mat-input mat-input-valid" value=newDonor.phoneNumber required="required"}}
+				<label for="donor-phone-number" class="form-input-label">Cell Number</label>
+				<div id="donor-phone-number-error" class="mat-input-error"></div>
 			</div>
 		</div>
 	{{/if}}
@@ -86,7 +89,9 @@
 			$250</div><div class="gift-total-box" id="gift-total-500" {{ action "setTotal" 500 newGift }}>
 			$500</div><div class="gift-total-box" id="gift-total-1000" {{ action "setTotal" 1000 newGift }}>
 			$1000</div>
-			<span>$</span>{{ input type="text" value=newGift.total id="total-other" focus-in="showText" placeholder="Other Amount"}}
+			<div>
+				{{input type="text" value=newGift.total id="total-other" class="mat-input" focus-in="showText" placeholder="Other"}}
+			</div>
 		</div>
 		<div id="totals-error"></div>
 	</div>
@@ -103,19 +108,22 @@
 			<option>Academics</option>
 			<option>Other</option>
 		</select>
-		<div>{{ input id="designation-other" placeholder="Other Designation" value=newGift.designation }}</div>
+		<div class="mat-input-group">
+			{{input id="designation-other" class="mat-input" placeholder="Other Designation" value=newGift.designation }}
+		</div>
 	</div>
 
 	<div id="recurring">
 		<p>Make this a Recurring Gift</p>
-		<div id="frequency-annually" {{ action "setFrequency" "annually" newDonor donor }}>Annually</div>
-		<div id="frequency-quarterly" {{ action "setFrequency" "quarterly" newDonor donor }}>Quarterly</div>
-		<div id="frequency-monthly" {{ action "setFrequency" "monthly" newDonor donor }}>Monthly</div>
+		<div id="frequency-annually" {{action "setFrequency" "annually" newDonor donor }}>Annually</div>
+		<div id="frequency-quarterly" {{action "setFrequency" "quarterly" newDonor donor }}>Quarterly</div>
+		<div id="frequency-monthly" {{action "setFrequency" "monthly" newDonor donor }}>Monthly</div>
 	</div>
 
 	<div id="button-wrapper">
-		<input type="submit" id="submit-button" value="Make Gift" {{ action "submitForm" newGift newDonor donor client conversion donor.paymentMethod}}>
+		<input type="submit" id="submit-button" value="Make Gift" {{action "submitForm" newGift newDonor donor client conversion donor.paymentMethod}}>
 	</div>
 
 	{{input type="hidden" value="eyJ2ZXJzaW9uIjoyLCJhdXRob3JpemF0aW9uRmluZ2VycHJpbnQiOiIyNTQ5OTA4MWMxNTM0MDE4Mzk0MmU4OTMyNGNkNjFhODExYjJkYTY0ZjBjMjliMGYwMTdlMGJlZGMzN2FjZjI0fGNyZWF0ZWRfYXQ9MjAxNi0wOC0yMlQxNjowNjoxMy4yNTE1NjU1NTUrMDAwMFx1MDAyNm1lcmNoYW50X2lkPW41a3BkcHZmcW03OGhxYzNcdTAwMjZwdWJsaWNfa2V5PWQzOTM2c3gzOG5ndmZnZjMiLCJjb25maWdVcmwiOiJodHRwczovL2FwaS5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tOjQ0My9tZXJjaGFudHMvbjVrcGRwdmZxbTc4aHFjMy9jbGllbnRfYXBpL3YxL2NvbmZpZ3VyYXRpb24iLCJjaGFsbGVuZ2VzIjpbXSwiZW52aXJvbm1lbnQiOiJzYW5kYm94IiwiY2xpZW50QXBpVXJsIjoiaHR0cHM6Ly9hcGkuc2FuZGJveC5icmFpbnRyZWVnYXRld2F5LmNvbTo0NDMvbWVyY2hhbnRzL241a3BkcHZmcW03OGhxYzMvY2xpZW50X2FwaSIsImFzc2V0c1VybCI6Imh0dHBzOi8vYXNzZXRzLmJyYWludHJlZWdhdGV3YXkuY29tIiwiYXV0aFVybCI6Imh0dHBzOi8vYXV0aC52ZW5tby5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tIiwiYW5hbHl0aWNzIjp7InVybCI6Imh0dHBzOi8vY2xpZW50LWFuYWx5dGljcy5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tL241a3BkcHZmcW03OGhxYzMifSwidGhyZWVEU2VjdXJlRW5hYmxlZCI6dHJ1ZSwicGF5cGFsRW5hYmxlZCI6dHJ1ZSwicGF5cGFsIjp7ImRpc3BsYXlOYW1lIjoiVEJEIiwiY2xpZW50SWQiOm51bGwsInByaXZhY3lVcmwiOiJodHRwOi8vZXhhbXBsZS5jb20vcHAiLCJ1c2VyQWdyZWVtZW50VXJsIjoiaHR0cDovL2V4YW1wbGUuY29tL3RvcyIsImJhc2VVcmwiOiJodHRwczovL2Fzc2V0cy5icmFpbnRyZWVnYXRld2F5LmNvbSIsImFzc2V0c1VybCI6Imh0dHBzOi8vY2hlY2tvdXQucGF5cGFsLmNvbSIsImRpcmVjdEJhc2VVcmwiOm51bGwsImFsbG93SHR0cCI6dHJ1ZSwiZW52aXJvbm1lbnROb05ldHdvcmsiOnRydWUsImVudmlyb25tZW50Ijoib2ZmbGluZSIsInVudmV0dGVkTWVyY2hhbnQiOmZhbHNlLCJicmFpbnRyZWVDbGllbnRJZCI6Im1hc3RlcmNsaWVudDMiLCJiaWxsaW5nQWdyZWVtZW50c0VuYWJsZWQiOnRydWUsIm1lcmNoYW50QWNjb3VudElkIjoidGJkIiwiY3VycmVuY3lJc29Db2RlIjoiVVNEIn0sImNvaW5iYXNlRW5hYmxlZCI6ZmFsc2UsIm1lcmNoYW50SWQiOiJuNWtwZHB2ZnFtNzhocWMzIiwidmVubW8iOiJvZmYifQ==" id="braintreeToken"}}
+	</div>
 </form>
