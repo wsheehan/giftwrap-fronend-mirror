@@ -1,33 +1,11 @@
 import Ember from 'ember';
-import RSVP from 'rsvp';
 
 export default Ember.Route.extend({
 	model(params) {
-		if (params.k) {
-			return RSVP.hash({
-				form: this.get('store').findRecord('form', params.client_id),
-			 	client: this.get('store').findRecord('client', params.client_id),
-				donor: this.get('store').queryRecord('forms/donor', {"k": params.k, "c": params.client_id }),
-				conversion: this.get('store').createRecord('metrics/forms/conversion', { "key": params.k, "client_id": params.client_id, "campaign_id": params.ca }).save()
-			});
-		} else {
-			return RSVP.hash({
-				form: this.get('store').findRecord('form', params.client_id),
-			 	client: this.get('store').findRecord('client', params.client_id),
-			 	conversion: this.get('store').createRecord('metrics/forms/conversion', { "client_id": params.client_id }).save()
-			});
-		}
+		return this.get('store').findRecord('form', params.client_id, { adapterOptions: { query: {"k": params.k, "ca": params.ca}}})
 	},
-	setupController(controller, models) {
-		controller.set("form", models.form);
-		controller.set("client", models.client);
-		controller.set("newGift", {});
-		controller.set("conversion", models.conversion);
-		if (models.donor) {
-			controller.set("donor", models.donor);
-		} else {
-			controller.set("newDonor", { "client_id": models.client.id });
-		}
+	setupController(controller, model) {
+		this._super(controller, model);
 	},
 	actions: {
 		submitForm(newGift, newDonor, donor, client, conversion, isPaymentMethod) {
@@ -74,8 +52,8 @@ export default Ember.Route.extend({
 					document.getElementById('totals-error').innerText = "Please Specify a Total";
 					document.getElementById('totals-error').style.display = "block";
 					valid = false;
-				} else { 
-					document.getElementById('totals-error').style.display = "none"; 
+				} else {
+					document.getElementById('totals-error').style.display = "none";
 				}
 			}
 			function checkNonce(nonce) {
