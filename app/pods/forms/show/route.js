@@ -6,11 +6,15 @@ export default Ember.Route.extend({
 	},
 	setupController(controller, model) {
 		this._super(controller, model);
+		controller.set("newGift", {});
+		controller.set("newDonor", {});
 	},
 	actions: {
-		submitForm(newGift, newDonor, donor, client, conversion, isPaymentMethod) {
+		submitForm(newGift, newDonor, model, isPaymentMethod) {
+			let newModel = model.serialize();
+
 			let valid = true; let nonce;
-			if (donor) {
+			if (newModel.donor) {
 				checkTotal(newGift.total);
 				if (!isPaymentMethod) {
 					nonce = document.getElementById('paymentMethodNonce').value;
@@ -18,7 +22,6 @@ export default Ember.Route.extend({
 				}
 			} else {
 				nonce = document.getElementById('paymentMethodNonce').value;
-
 				// Validate Fields
 				checkTotal(newGift.total);
 				checkNonce(nonce);
@@ -67,7 +70,10 @@ export default Ember.Route.extend({
 				}
 			}
 			if (valid) {
-				let currentDonor = donor ? donor.toJSON() : newDonor;
+				if (!newModel.donor) {
+					newModel.donor = newDonor;
+				}
+				console.log(newModel);
 				let gift = this.get('store').createRecord("forms/gift", Object.assign(newGift, currentDonor, { paymentMethodNonce: nonce, client: client, formConversion: conversion, newPaymentMethod: !isPaymentMethod }));
 				gift.save().then((returnedGift) => {
 					alert("Gift Saved");

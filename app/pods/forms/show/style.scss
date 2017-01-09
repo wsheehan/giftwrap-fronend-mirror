@@ -40,7 +40,6 @@
 
 #form-header {
 	color: #fff;
-	margin-bottom: 10px;
 	box-shadow: 0 1px 1px rgba(0,0,0,0.12), 0 1px 1px rgba(0,0,0,0.24);
 	img {
 		width: 100%;
@@ -63,26 +62,12 @@
 /* Donor Info */
 
 #donor-info {
-	@media (min-width: 600px) {
-		width: 80%;
-		margin-left: 10%;
-		border: 1px solid #ebebeb;
-		box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
-	}
-	background: rgba(255, 255, 255, 0.86);
-	#welcome-back, h4 {
-		margin-top: 10px;
-		text-align: center;
-	}
 	#welcome-back {
-		background-color: #d9edf7;
-		color: #31708f;
-		padding: 15px;
-		margin: 10px;
-		border-radius: 3px;
-	}
-	p {
-		padding-left: 5%;
+		color: #fff;
+		background-color: $primary-blue;
+		text-align: center;
+		padding: 10px;
+		font-size: 2em;
 	}
 	#paypal-info-block, #credit-info-block {
 		padding: 12px;
@@ -152,9 +137,22 @@
 	}
 }
 
+#extra-information {
+	p {
+		padding-left: 10%;
+		font-size: 1.3em;
+		padding-top: 20px;
+	}
+	.mat-input-group {
+		width: 80%;
+		margin-left: 10%;
+	}
+}
+
 /* Text Inputs */
 
 #inputs-wrapper {
+	margin-top: 20px;
 	> div {
 		display: inline-block;
 		width: 100%;
@@ -371,15 +369,12 @@
 
 #payment-details {
 	#paypal-info, #card-info {
-		display: none;
 		@media (min-width: 600px) {
 			width: 80%;
 			margin-left: 10%;
 		}
-		background: rgba(255, 255, 255, 0.86);
-		border: 1px solid #ebebeb;
+		display: none;
 		box-shadow: 0 1px 1px rgba(0,0,0,0.12), 0 1px 1px rgba(0,0,0,0.24);
-		border-radius: 2px;
 		div {
 			text-align: center;
 		}
@@ -399,15 +394,6 @@
 
 #paypal-info {
 	text-align: center;
-	img {
-		width: 50px;
-		height: 50px;
-	}
-}
-
-#paypal-logo {
-	height: 50px;
-	width: auto;
 }
 
 #saved-payment {

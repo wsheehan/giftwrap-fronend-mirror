@@ -31,7 +31,6 @@ export default Ember.Component.extend({
 						}
 						return;
 					}
-					console.log(payload);
 					document.getElementById('paymentMethodNonce').value = payload.nonce;
 					$("#payment-container").slideUp(400);
 					document.getElementById('paypal-info').style.display = 'block';
@@ -53,7 +52,7 @@ export default Ember.Component.extend({
 			// Instantiate Hosted Fields
 			Braintree.hostedFields.create({
 				client: clientInstance,
-				styles: { 
+				styles: {
 					'input': {
 						"font-size": '16px',
 						"color": '#282c37'
@@ -85,41 +84,25 @@ export default Ember.Component.extend({
 					console.log(hostedFieldsErr);
 					return;
 				}
-				
+
 				Ember.$("#payment-container").slideDown(500); // Show container once both methods have been instantiated
 
 				hostedFieldsInstance.on('validityChange', function (event) {
-			      // Check if all fields are valid, then show submit button
-			      let formValid = Object.keys(event.fields).every(function (key) {
-			        return event.fields[key].isValid;
-			      });
+		      // Check if all fields are valid, then show submit button
+		      let formValid = Object.keys(event.fields).every(function (key) {
+		        return event.fields[key].isValid;
+		      });
 
-			      if (formValid) {
-			        console.log("Every Field Valid");
-			        hostedFieldsInstance.tokenize(function (tokenizeErr, payload) {
-						if (tokenizeErr) {
-							alert("(Hosted) Could not tokenize: " + tokenizeErr);
-							return;
-						}
-						document.getElementById('paymentMethodNonce').value = payload.nonce;
-						document.getElementById('card-info').style.display = 'block';
-						//document.getElementById('paypal-email').innerHTML = '' + payload.details.email + '';
-					});
-			      } else {
-			        console.log("Some Fields Still invalid");
-			      }
-			    });
-
-			    document.getElementById('card-cancel').addEventListener('click', function() {
-			    	hostedFieldsInstance.teardown(function (teardownErr) {
-			    		if (teardownErr) {
-							alert("Could Not Teardown Method");
-						} else {
-							$("#payment-details").hide(100);
-							$("#payment-container").slideDown(400);
-						}
-			    	});
-			    });
+		      if (formValid) {
+		        hostedFieldsInstance.tokenize(function (tokenizeErr, payload) {
+							if (tokenizeErr) {
+								alert("(Hosted) Could not tokenize: " + tokenizeErr);
+								return;
+							}
+							document.getElementById('paymentMethodNonce').value = payload.nonce;
+						});
+		      }
+		    });
 			});
 		});
 	}
