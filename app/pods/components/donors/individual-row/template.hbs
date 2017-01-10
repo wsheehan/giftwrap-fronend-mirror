@@ -1,5 +1,7 @@
 {{yield}}
-<div {{action "chooseDonor" donor}} class="donor-id-{{donor.id}}">
+
+<div {{action "chooseDonor"}} class="donor-id-{{donor.id}}">
+
 	{{#if checkbox}}
 		<div class="donor-checkbox">
 			<span class="glyphicon glyphicon-plus"></span>
@@ -11,9 +13,9 @@
 	<div>{{donor.affiliation}}</div>
 	<div>{{donor.classYear}}</div>
 
-	{{#unless checkbox}}
+	{{#if removeBox}}
 		<div class="donor-remove">
-			<span {{action "removeDonor" donor}} class="glyphicon glyphicon-remove"></span>
+			<span {{action "removeDonor"}} class="glyphicon glyphicon-remove"></span>
 		</div>
-	{{/unless}}
+	{{/if}}
 </div>
