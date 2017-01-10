@@ -1,5 +1,39 @@
 {{outlet}}
 
-{{#each model as |donor|}}
-	<div>{{donor.firstName}}</div>
-{{/each}}
+<div id="donor-index-selection">
+	<div id="donor-search">
+		{{input key-up="searchDonors" placeholder="search" class="mat-input"}}
+		<div id="donor-search-results">
+			{{#each donorSearchResults as |donor|}}
+				{{donors/individual-row donor=donor linkToProfile=true}}
+			{{/each}}
+		</div>
+	</div>
+	<div id="donor-table">
+		<div id="donor-table-header">
+			<div>
+				<div class="donor-checkbox"></div>
+				<div>First Name</div>
+				<div>Last Name</div>
+				<div>Affiliation</div>
+				<div>Class Year</div>
+			</div>
+		</div>
+		{{#each model as |donor|}}
+			{{donors/individual-row donor=donor linkToProfile=true}}
+		{{/each}}
+		<div id="donor-table-footer">
+			<span>Rows per page:
+				<select value={{size}} onchange={{action "sizeChange"}}>
+					<option value="5">5</option>
+					<option value="10">10</option>
+					<option value="25">25</option>
+				</select>
+			</span>
+			<span id="donor-table-page-control">
+				<span></span>
+				<span {{action "changePage" -1}}>&lt;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span {{action "changePage" 1}}> &gt;</span>
+			</span>
+		</div>
+	</div>
+</div>
