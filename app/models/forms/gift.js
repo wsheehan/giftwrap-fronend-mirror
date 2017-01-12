@@ -16,7 +16,8 @@ export default Model.extend({
 	maskedNumber: attr('string'),
 	creditImageUrl: attr('string'),
 	paymentMethodNonce: attr('string'),
-	client: belongsTo('client'),
-	formConversion: belongsTo('metrics/forms/conversion'),
+	client_id: attr('string'),
+	donor_id: attr('string'),
+	metric_form_conversion_id: attr('string'),
 	newPaymentMethod: attr('boolean', { defaultValue: false })
 });

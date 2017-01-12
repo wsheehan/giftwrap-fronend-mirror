@@ -2,40 +2,37 @@
 
 <form id="form">
 
-	{{!-- <div id="seal">
-		<img src="https://www.breakthroughmiami.org/portal/image/image_gallery?uuid=3ad8007b-b5a2-4acc-87aa-e6f393558ff5&groupId=660594&t=1388532405015">
-	</div> --}}
-
 	<div id="form-header">
 		<img src="https://s3.amazonaws.com/giftwrap/ransom_sailing.jpg">
-		<span>Give to {{ client.name }}</span>
+		<span>Give to {{ model.client.name }}</span>
 	</div>
 
 	<div id="form-content">
-	{{#if donor}}
+	{{#if model.donor}}
 		<div id="donor-info">
-			<h4 id="welcome-back">Welcome Back {{ donor.firstName }} {{ donor.lastName }}!</h4>
-			{{#if donor.paymentMethod}}
-				{{#if donor.paypalEmail}}
+			<div id="welcome-back">Welcome Back {{ model.donor.firstName }} {{ model.donor.lastName }}!</div>
+			{{#if model.donor.paymentMethod}}
+				{{#if model.donor.paypalEmail}}
 					<div id="paypal-info-block">
 						<div id="paypal-logo"><img src="https://s3.amazonaws.com/giftwrap/logos/paypal-text.png"></div>
-						<span id="paypal-email">{{donor.paypalEmail}}</span><span class="change-payment-method" {{action "teardownPaymentMethod" donor}}>change method</span>
+						<span id="paypal-email">{{model.donor.paypalEmail}}</span><span class="change-payment-method" {{action "teardownPaymentMethod" donor}}>change method</span>
 					</div>
 				{{else}}
 					<div id="credit-info-block">
-						<div id="credit-image"><img src="{{donor.creditImageUrl}}"></div><span id="masked-number">{{donor.maskedNumber}}</span>
+						<div id="credit-image"><img src="{{donor.creditImageUrl}}"></div><span id="masked-number">{{model.donor.maskedNumber}}</span>
 						<span class="change-payment-method" {{action "teardownPaymentMethod" donor}}>change method</span>
 					</div>
 				{{/if}}
 			{{/if}}
 		</div>
-		<div id="inputs-wrapper">
-			{{#unless donor.phoneNumber}}
-			<div>
-				<label for="donor-phone-number" class="form-input-label">Cell Number</label><br>
-				<span>+1</span>{{input id="donor-phone-number" type="number" class="mat-input" value=donor.phoneNumber }}
-				<div id="donor-phone-number-error" class="mat-input-error"></div>
-			</div>
+		<div id="extra-information">
+			{{#unless model.donor.phoneNumber}}
+				<p>We'd love a little more information about you</p>
+				<div class="mat-input-group">
+					{{input id="donor-phone-number" type="number" class="mat-input mat-input-valid" value=donor.phoneNumber }}
+					<label for="donor-phone-number" class="form-input-label">Cell Number</label>
+					<div id="donor-phone-number-error" class="mat-input-error"></div>
+				</div>
 			{{/unless}}
 		</div>
 	{{else}}
@@ -121,7 +118,7 @@
 	</div>
 
 	<div id="button-wrapper">
-		<input type="submit" id="submit-button" value="Make Gift" {{action "submitForm" newGift newDonor donor client conversion donor.paymentMethod}}>
+		<input type="submit" id="submit-button" value="Make Gift" {{action "submitForm" newGift newDonor model}}>
 	</div>
 
 	{{input type="hidden" value="eyJ2ZXJzaW9uIjoyLCJhdXRob3JpemF0aW9uRmluZ2VycHJpbnQiOiIyNTQ5OTA4MWMxNTM0MDE4Mzk0MmU4OTMyNGNkNjFhODExYjJkYTY0ZjBjMjliMGYwMTdlMGJlZGMzN2FjZjI0fGNyZWF0ZWRfYXQ9MjAxNi0wOC0yMlQxNjowNjoxMy4yNTE1NjU1NTUrMDAwMFx1MDAyNm1lcmNoYW50X2lkPW41a3BkcHZmcW03OGhxYzNcdTAwMjZwdWJsaWNfa2V5PWQzOTM2c3gzOG5ndmZnZjMiLCJjb25maWdVcmwiOiJodHRwczovL2FwaS5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tOjQ0My9tZXJjaGFudHMvbjVrcGRwdmZxbTc4aHFjMy9jbGllbnRfYXBpL3YxL2NvbmZpZ3VyYXRpb24iLCJjaGFsbGVuZ2VzIjpbXSwiZW52aXJvbm1lbnQiOiJzYW5kYm94IiwiY2xpZW50QXBpVXJsIjoiaHR0cHM6Ly9hcGkuc2FuZGJveC5icmFpbnRyZWVnYXRld2F5LmNvbTo0NDMvbWVyY2hhbnRzL241a3BkcHZmcW03OGhxYzMvY2xpZW50X2FwaSIsImFzc2V0c1VybCI6Imh0dHBzOi8vYXNzZXRzLmJyYWludHJlZWdhdGV3YXkuY29tIiwiYXV0aFVybCI6Imh0dHBzOi8vYXV0aC52ZW5tby5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tIiwiYW5hbHl0aWNzIjp7InVybCI6Imh0dHBzOi8vY2xpZW50LWFuYWx5dGljcy5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tL241a3BkcHZmcW03OGhxYzMifSwidGhyZWVEU2VjdXJlRW5hYmxlZCI6dHJ1ZSwicGF5cGFsRW5hYmxlZCI6dHJ1ZSwicGF5cGFsIjp7ImRpc3BsYXlOYW1lIjoiVEJEIiwiY2xpZW50SWQiOm51bGwsInByaXZhY3lVcmwiOiJodHRwOi8vZXhhbXBsZS5jb20vcHAiLCJ1c2VyQWdyZWVtZW50VXJsIjoiaHR0cDovL2V4YW1wbGUuY29tL3RvcyIsImJhc2VVcmwiOiJodHRwczovL2Fzc2V0cy5icmFpbnRyZWVnYXRld2F5LmNvbSIsImFzc2V0c1VybCI6Imh0dHBzOi8vY2hlY2tvdXQucGF5cGFsLmNvbSIsImRpcmVjdEJhc2VVcmwiOm51bGwsImFsbG93SHR0cCI6dHJ1ZSwiZW52aXJvbm1lbnROb05ldHdvcmsiOnRydWUsImVudmlyb25tZW50Ijoib2ZmbGluZSIsInVudmV0dGVkTWVyY2hhbnQiOmZhbHNlLCJicmFpbnRyZWVDbGllbnRJZCI6Im1hc3RlcmNsaWVudDMiLCJiaWxsaW5nQWdyZWVtZW50c0VuYWJsZWQiOnRydWUsIm1lcmNoYW50QWNjb3VudElkIjoidGJkIiwiY3VycmVuY3lJc29Db2RlIjoiVVNEIn0sImNvaW5iYXNlRW5hYmxlZCI6ZmFsc2UsIm1lcmNoYW50SWQiOiJuNWtwZHB2ZnFtNzhocWMzIiwidmVubW8iOiJvZmYifQ==" id="braintreeToken"}}

@@ -15,17 +15,15 @@
 		top: -20px;
 		font-size: 1em;
 	}
-	.mat-input-valid {
-		input:valid ~ label {
-			top: -20px;
-			font-size: 1em;
-		}
-		input:valid {
-			border-bottom: 2px solid green !important;
-			color: green;
-			~ .mat-input-error {
-				display: none;
-			}
+	input:valid ~ label {
+		top: -20px;
+		font-size: 1em;
+	}
+	input:valid {
+		border-bottom: 2px solid green !important;
+		color: green;
+		~ .mat-input-error {
+			display: none;
 		}
 	}
 	// No Spin Button on Number fields
