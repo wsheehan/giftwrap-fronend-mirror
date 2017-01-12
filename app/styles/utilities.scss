@@ -8,29 +8,18 @@ body {
 
 // Forms
 .input-error {
-	border: 1px solid $error-red !important;
+	border-bottom: 2px solid $error-red !important;
 }
+
+.input-success {
+	border-bottom: 2px solid #5cb85c;
+}
+
 .input-error-text {
 	text-align: center;
 	font-size: 0.8em;
 	color: $error-red;
 }
-
-
-////////////////////////////
-//    Flexbox Classes	   //
-///////////////////////////
-// .flex-container {
-// 	display: flex;
-// 	justify-content: space-between;
-// }
-//
-// $flex-width: flex !default;
-// @for $i from 1 through 12 {
-// 	.#{$flex-width}-#{$i} {
-// 		width: calc(100%/$i);
-// 	}
-// }
 
 // Other
 .centering-container {
