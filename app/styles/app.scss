@@ -2,3 +2,35 @@
 @import "utilities";
 @import "material";
 @import "colors";
+
+/* fonts */
+@import url('https://fonts.googleapis.com/css?family=Scope+One');
+
+/* giftwrap normalizer */
+
+$navy-blue:   #003366;
+$link-grey:   #637382;
+$border-grey: #d3d3d3;
+
+body {
+	font-family: 'Scope One', serif;
+}
+
+a {
+	color: $link-grey;
+	&:hover {
+		color: $navy-blue;
+	}
+}
+
+/* universal mixin classes */
+
+.uni-background-cover {
+  -webkit-background-size:cover;
+  -moz-background-size:cover;
+  -o-background-size:cover;
+  -ms-background-size:cover;
+  background-size:cover;
+}
+
+.rb {border: 1px solid red}
