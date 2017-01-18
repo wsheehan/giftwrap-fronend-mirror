@@ -7,7 +7,10 @@ export default Ember.Component.extend({
   actions: {
     logout() {
       this.get('session').invalidate();
-      this.get('routing').transitionTo("/");
+      this.get('routing').transitionTo("index");
+    },
+    goToRoot() {
+      this.get('routing').transitionTo("index");
     }
   }
 });
