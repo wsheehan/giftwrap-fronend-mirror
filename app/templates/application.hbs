@@ -1,2 +1,9 @@
+{{#if hideHeader}}
+  {{!-- Hide Header --}}
+{{else if session.isAuthenticated}}
+  {{main-header user=session.currentUser}}
+{{else}}
+  {{main-header}}
+{{/if}}
 
 {{outlet}}

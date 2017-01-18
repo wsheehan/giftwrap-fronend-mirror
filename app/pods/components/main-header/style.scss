@@ -1,0 +1,16 @@
+@import "app/styles/colors";
+
+#main-header {
+  display: flex;
+	justify-content: space-between;
+	padding: 10px 20px;
+	border-bottom: 1px solid $border-grey;
+	h1 {
+		margin: 0;
+		color: $navy-blue;
+		font-size: 3em;
+	}
+	a {
+		padding: 10px 5px;
+	}
+}

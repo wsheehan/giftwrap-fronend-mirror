@@ -1,0 +1,22 @@
+<header id="main-header" class="mat-box-soft-shadow">
+	<div>
+		<h1>Giftwrap</h1>
+	</div>
+
+  {{#if user}}
+    <div id="main-header-links">
+      <h4>
+        {{#link-to "index"}}{{user.first}} {{user.lastName}}{{/link-to}}
+        <a href="#" {{action "logout"}}>logout</a>
+      </h4>
+    </div>
+  {{else}}
+  	<div id="main-header-links">
+  		<h4>
+  			<a href="#">Solutions</a>
+  			<a href="#">Pricing</a>
+        {{#link-to "login"}}Sign in{{/link-to}}
+  		</h4>
+  	</div>
+  {{/if}}
+</header>
