@@ -1,0 +1,13 @@
+@import "app/styles/colors";
+
+.gray-background {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: $light-gray;
+  z-index: -100;
+}
+
+#campaign-show-header {
+  
+}
