@@ -1,9 +1,15 @@
 @import "app/styles/colors";
 
 #main-header {
+  position: fixed;
+  width: 100%;
+  height: 70px;
+  top: 0px;
+  z-index: 1000;
   display: flex;
 	justify-content: space-between;
 	padding: 10px 20px;
+  background-color: #fff;
 	border-bottom: 1px solid $border-grey;
 	h1 {
 		margin: 0;
@@ -14,4 +20,16 @@
 	a {
 		padding: 10px 5px;
 	}
+  @media (max-width: 900px) {
+    #main-header-links {
+      display: none;
+    }
+  }
+}
+
+#main-header-offset {
+  height: 70px;
+  @media (max-width: 900px) {
+    height: 105px;
+  }
 }

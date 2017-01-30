@@ -6,4 +6,16 @@
   {{main-header}}
 {{/if}}
 
-{{outlet}}
+{{#if hideSidebar}}
+  {{!-- Hide Sidebar --}}
+  {{outlet}}
+{{else if session.isAuthenticated}}
+  {{admin-sidebar user=session.currentUser}}
+  <div id="admin-content-wrapper">
+    <div id="admin-content">
+      {{outlet}}
+    </div>
+  </div>
+{{else}}
+  {{outlet}}
+{{/if}}

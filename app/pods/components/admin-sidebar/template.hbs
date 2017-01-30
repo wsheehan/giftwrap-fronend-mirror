@@ -1,0 +1,15 @@
+{{yield}}
+
+<div id="admin-sidebar-show" {{action "showNavbar"}} class="mat-box-soft-shadow">
+  <span class="glyphicon glyphicon-menu-hamburger"></span>
+</div>
+
+<div id="admin-sidebar">
+  <div id="admin-sidebar-teardown"><span class="glyphicon glyphicon-remove pull-right" {{action "teardownNavbar"}}></span></div>
+  <div class="admin-sidebar-pane" {{action "transitionTo" "index"}}><span class="glyphicon glyphicon-user"></span>{{user.firstName}} {{user.lastName}}</div>
+  <div class="admin-sidebar-pane" {{action "transitionTo" "index"}}><span class="glyphicon glyphicon-home"></span>Home</div>
+  <div class="admin-sidebar-pane" {{action "transitionTo" "donors.index"}}><span class="glyphicon glyphicon-user"></span>Donors</div>
+  <div class="admin-sidebar-pane" {{action "transitionTo" "index"}}><span class="glyphicon glyphicon-send"></span>Campaigns</div>
+  <div class="admin-sidebar-pane" {{action "transitionTo" "donors.index"}}><span class="glyphicon glyphicon-user"></span>Donor Lists</div>
+  <div class="admin-sidebar-pane" {{action "transitionTo" "index"}}><span class="glyphicon glyphicon-gift"></span>Gifts</div>
+</div>
