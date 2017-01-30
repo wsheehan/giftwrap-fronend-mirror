@@ -6,5 +6,11 @@ export default Ember.Controller.extend({
 
 	hideHeader: Ember.computed(function() {
 		return (this.get('routing.currentRouteName') === 'forms.show');
+	}),
+
+	hideSidebar: Ember.computed(function() {
+		const currentRoute = this.get('routing.currentRouteName');
+		const routesToHide = ["forms.show", "index"];
+		return routesToHide.includes(currentRoute);
 	})
 });

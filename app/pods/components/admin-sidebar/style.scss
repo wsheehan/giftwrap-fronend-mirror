@@ -1,0 +1,75 @@
+@import "app/styles/colors";
+
+#admin-sidebar-show {
+  @media (min-width: 900px) {
+    display: none;
+  }
+  background-color: $primary-blue;
+  color: #fff;
+  padding: 5px;
+  padding-left: 20px;
+  font-size: 1.4em;
+  position: fixed;
+  top: 70px;
+  width: 100%;
+  height: 35px;
+  z-index: 1001;
+}
+
+#admin-sidebar-teardown {
+  display: none;
+  @media (max-width: 900px) {
+    display: static;
+  }
+  span {
+    padding-top: 5px;
+    padding-right: 15px;
+    font-size: 1.3em;
+    cursor: pointer;
+  }
+}
+
+#admin-sidebar {
+  width: 250px;
+  height: calc(100vh - 70px);
+  position: fixed;
+  top: 70px;
+  left: 0px;
+
+  @media (max-width: 900px) {
+    display: none;
+  }
+
+  z-index: 1001;
+  background-color: $primary-blue;
+  color: #fff;
+
+  padding-top: 10px;
+  @media (min-width: 900px) {
+    padding-top: 30px;
+  }
+
+  .admin-sidebar-pane {
+    font-size: 1.7em;
+    padding: 5px 20px;
+    cursor: pointer;
+    span {
+      font-size: 0.8em;
+      padding-right: 10px;
+    }
+  }
+}
+
+#admin-content-wrapper {
+  margin-left: 250px;
+  position: relative;
+  width: calc(100vw - 250px);
+  @media (max-width: 900px) {
+    width: 100%;
+    margin-left: 0px;
+  }
+}
+
+.admin-content-blur {
+  opacity: 0.5;
+}
