@@ -46,16 +46,23 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.APP.API_URL = 'https://give-staging.herokuapp.com'
+    ENV.APP.API_URL = 'https://api.giftwrap.io'
   }
 
   ENV['ember-simple-auth'] = {
     authorizer: 'authorizer:jwt'
   };
 
-  ENV['ember-simple-auth-token'] = {
-    serverTokenEndpoint: 'https://localhost:3000/users/authentication',
+  if (environment === 'production') {
+    ENV['ember-simple-auth-token'] = {
+      serverTokenEndpoint: 'https://localhost:3000/users/authentication',
+    }
+  } else {
+    ENV['ember-simple-auth-token'] = {
+      serverTokenEndpoint: "https://api.giftwrap.io/users/authentication"
+    }
   };
+
 
   return ENV;
 };

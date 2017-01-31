@@ -5,6 +5,7 @@ import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 export default ActiveModelAdapter.extend(DataAdapterMixin, {
 	namespace: ENV.API_NAMESPACE,
 	authorizer: 'authorizer:token',
+	host: ENV.APP.API_URL,
 
 	// Allow for query params on findRecord()
 	urlForFindRecord(id, modelName, snapshot) {
