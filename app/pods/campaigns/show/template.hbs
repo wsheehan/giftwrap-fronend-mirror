@@ -1,4 +1,49 @@
 {{outlet}}
 
-<p>{{model.id}}</p>
-<p>Campaign Show</p>
+<div id="campaign-show-header">
+  <div>{{model.title}}<span>by {{model.user.firstName}} {{model.user.lastName}}</span></div>
+  <p>{{model.description}}</p>
+</div>
+
+<div class="campaign-conversion-card mat-box-soft-shadow col-sm-4">
+  <h3>Conversions</h3>
+  {{progress-bar percent=model.campaignConversionRate shape="line" color="gold" easing="easeInOut"}}
+  <div class="progress-percentage">{{model.campaignConversionRate}}%</div>
+  <p>Sent: {{model.campaignsSent}}</p>
+  <p>Resulted in Gifts: {{model.campaignsConverted}}</p>
+</div>
+
+<div class="campaign-raised-card mat-box-soft-shadow col-sm-3">
+  <span class="glyphicon glyphicon-gift"></span>
+  <div>{{model.totalRaised}}</div>
+  <p>Total Raised</p>
+</div>
+
+<div class="campaign-new-subs-card mat-box-soft-shadow col-sm-3">
+  <span class="glyphicon glyphicon-calendar"></span>
+  <div>{{model.newSubscriptions}}</div>
+  <p>New Subscriptions</p>
+</div>
+
+<div class="col-xs-12"></div>
+
+<div class="col-sm-8">
+  <div class="campaign-top-gifts mat-box-soft-shadow">
+    <h3>Top Gifts</h3>
+    {{#each model.topGifts as |gift|}}
+      <div>
+        <span>{{gift.donor.firstName}} {{gift.donor.lastName}}</span>
+        <span>{{gift.designation}}</span>
+        <span>{{gift.giftType}}</span>
+        <span>${{gift.total}}</span>
+      </div>
+    {{/each}}
+  </div>
+</div>
+
+<div class="col-sm-4">
+  <div class="campaign-donor-list-card mat-box-soft-shadow">
+    <div>Sent to: {{model.donorList.title}}</div>
+    <p>{{model.donorList.description}}</p>
+  </div>
+</div>

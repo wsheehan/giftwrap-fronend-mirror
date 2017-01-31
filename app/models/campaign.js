@@ -1,10 +1,17 @@
-import Model from 'ember-data/model';
-import attr from 'ember-data/attr';
-import { belongsTo, hasMany } from 'ember-data/relationships';
+import DS from 'ember-data';
 
-export default Model.extend({
-	user: belongsTo('user'),
-	donorList: belongsTo('donorList'),
-	client: belongsTo('client'),
-	text: belongsTo('campaigns/text')
+export default DS.Model.extend({
+	title: DS.attr(),
+	description: DS.attr(),
+	user: DS.belongsTo('user'),
+	donorList: DS.belongsTo('donorList'),
+	client: DS.belongsTo('client'),
+	text: DS.belongsTo('campaigns/text'),
+	topGifts: DS.hasMany('campaigns/top-gifts'),
+	gifts: DS.hasMany('gift'),
+	totalRaised: DS.attr(),
+	campaignsSent: DS.attr(),
+	campaignsConverted: DS.attr(),
+	campaignConversionRate: DS.attr(),
+	newSubscriptions: DS.attr()
 });
