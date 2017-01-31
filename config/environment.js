@@ -47,6 +47,8 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.APP.API_URL = 'https://api.giftwrap.io'
+  } else {
+    ENV.APP.API_URL = 'https://localhost:3000'
   }
 
   ENV['ember-simple-auth'] = {
@@ -55,14 +57,13 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV['ember-simple-auth-token'] = {
-      serverTokenEndpoint: 'https://localhost:3000/users/authentication',
+      serverTokenEndpoint: 'https://api.giftwrap.io/users/authentication'
     }
   } else {
     ENV['ember-simple-auth-token'] = {
-      serverTokenEndpoint: "https://api.giftwrap.io/users/authentication"
+      serverTokenEndpoint: 'https://localhost:3000/users/authentication'
     }
   };
-
 
   return ENV;
 };
