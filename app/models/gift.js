@@ -6,5 +6,6 @@ export default Model.extend({
 	total: attr('string'),
 	designation: attr('string'),
 	giftType: attr('string'),
-	donor: belongsTo('donor')
+	donor: belongsTo('donor'),
+	campaign: belongsTo('campaign')
 });

@@ -1,13 +1,111 @@
 @import "app/styles/colors";
 
-.gray-background {
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  background-color: $light-gray;
-  z-index: -100;
+#campaign-show-header {
+  div {
+    font-size: 2.3em;
+    color: $primary-blue;
+    padding-top: 20px;
+    padding-left: 30px;
+    span {
+      color: $mid-black;
+      padding-left: 10px;
+      font-size: 0.55em;
+      font-style: italic;
+      @media (max-width: 900px) {
+        display: block;
+      }
+    }
+  }
+  p {
+    @media (min-width: 900px) {
+      width: 60%;
+    }
+    font-size: 1.5em;
+    color: $mid-black;
+    padding-top: 20px;
+    padding-left: 30px;
+  }
 }
 
-#campaign-show-header {
-  
+.campaign-conversion-card {
+  margin: 15px;
+  >h3 {
+    text-align: center;
+    padding: 10px;
+  }
+  .progress-percentage {
+    padding: 5px;
+    font-size: 1.3em;
+    text-align: right;
+  }
+  p {
+    font-size: 1.2em;
+    color: $soft-green;
+    &:nth-of-type(1) {
+      color: $mid-black;
+    }
+  }
+}
+
+.campaign-raised-card, .campaign-new-subs-card {
+  margin: 15px;
+  text-align: center;
+  color: $soft-green;
+  span {
+    padding-top: 15px;
+    font-size: 2.5em;
+  }
+  div {
+    font-size: 3em;
+  }
+  p {
+    color: $mid-black;
+    font-size: 1.5em;
+  }
+}
+
+.campaign-new-subs-card {
+  span, div {
+    color: $navy-blue;
+  }
+}
+
+.campaign-top-gifts {
+  padding: 15px;
+  h3 {
+    color: $primary-blue;
+  }
+  > div {
+    padding: 5px;
+    margin-bottom: 5px;
+  }
+  span {
+    display: inline-block;
+    width: 24%;
+    color: $mid-black;
+    text-align: right;
+    &:nth-of-type(1) {
+      color: black;
+      text-align: left;
+    }
+    &:nth-of-type(2) {
+      font-size: 0.8em;
+    }
+    &:nth-of-type(4) {
+      font-size: 1.3em;
+      color: $soft-green;
+    }
+  }
+}
+
+.campaign-donor-list-card {
+  padding: 15px;
+  div {
+    font-size: 1.5em;
+    padding: 10px 0px;
+  }
+  p {
+    text-indent: 5px;
+    color: $mid-black;
+  }
 }

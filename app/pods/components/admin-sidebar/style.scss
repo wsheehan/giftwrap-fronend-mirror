@@ -47,6 +47,9 @@
   padding-top: 10px;
   @media (min-width: 900px) {
     padding-top: 30px;
+    .admin-sidebar-pane-user {
+      display: none;
+    }
   }
 
   .admin-sidebar-pane {
@@ -68,6 +71,7 @@
     width: 100%;
     margin-left: 0px;
   }
+  margin-bottom: 25px;
 }
 
 .admin-content-blur {

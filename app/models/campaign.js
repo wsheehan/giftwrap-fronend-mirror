@@ -6,5 +6,12 @@ export default DS.Model.extend({
 	user: DS.belongsTo('user'),
 	donorList: DS.belongsTo('donorList'),
 	client: DS.belongsTo('client'),
-	text: DS.belongsTo('campaigns/text')
+	text: DS.belongsTo('campaigns/text'),
+	topGifts: DS.hasMany('campaigns/top-gifts'),
+	gifts: DS.hasMany('gift'),
+	totalRaised: DS.attr(),
+	campaignsSent: DS.attr(),
+	campaignsConverted: DS.attr(),
+	campaignConversionRate: DS.attr(),
+	newSubscriptions: DS.attr()
 });
