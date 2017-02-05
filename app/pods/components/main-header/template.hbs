@@ -6,7 +6,7 @@
   {{#if user}}
     <div id="main-header-links">
       <h4>
-        {{#link-to "index"}}<span class="glyphicon glyphicon-user"></span>&nbsp; {{user.firstName}} {{user.lastName}}{{/link-to}}
+        {{#link-to "users.show" user.id}}<span class="glyphicon glyphicon-user"></span>&nbsp; {{user.firstName}} {{user.lastName}}{{/link-to}}
         {{!-- <a href="#" {{action "logout"}}>Logout</a> --}}
       </h4>
     </div>
