@@ -34,6 +34,10 @@ Router.map(function() {
   this.route('donor-lists', function() {
     this.route('new');
   });
+
+  this.route('users', function() {
+    this.route('show', { path: "/:user_id"});
+  });
 });
 
 export default Router;
