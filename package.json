@@ -51,6 +51,7 @@
     "ember-simple-auth-token": "1.1.1",
     "ember-welcome-page": "^1.0.3",
     "loader.js": "^4.0.10",
-    "moment": "^2.16.0"
+    "moment": "^2.16.0",
+    "progressbar.js": "^1.0.1"
   }
 }
