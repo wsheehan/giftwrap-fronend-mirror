@@ -1,0 +1,18 @@
+{{outlet}}
+
+<div id="user-profile" class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3" id="user-avatar-box">
+      <img src="{{model.avatarUrl}}" class="user-avatar-big" /><br>
+      <button class="mat-button-sm" {{action "showDropzonePopup"}}>CHANGE AVATAR</button>
+    </div>
+    <div class="col-sm-9" id="user-info-box">
+      <span>{{model.firstName}} {{model.lastName}}</span><br>
+      <span>{{model.email}}</span><br>
+      <span>{{model.jobTitle}}</span>
+    </div>
+  </div>
+  <div class="row">
+    {{image-dropzone endpoint=avatarEndpoint closeAfter=true completeAction="refreshModel" refreshModel=(route-action "refreshModel")}}
+  </div>
+</div>
