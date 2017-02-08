@@ -14,7 +14,7 @@ export default ESASession.extend({
 	currentUser: Ember.computed('isAuthenticated', 'session.content.authenticated.user', function() {
 		if (this.get('isAuthenticated')) {
 			const user = this.get('session.content.authenticated.user');
-			if (!this.get('store').recordIsLoaded('user', user.user_id)) {
+			if (!this.get('store').hasRecordForId('user', user.user_id)) {
 				this.get('store').push({
 					data: {
 						id: user.user_id,
