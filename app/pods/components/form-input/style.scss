@@ -1,0 +1,60 @@
+@import "app/styles/colors";
+
+.form-input-group {
+	position: relative;
+	margin-top: 25px;
+	label {
+		font-size: 1.2em;
+		color: $mid-black;
+		position: absolute;
+		pointer-events: none;
+		top: 5px;
+		transition:0.2s ease all;
+	}
+	.form-label-focus {
+		top: -20px;
+		font-size: 1em;
+	}
+  .form-input-valid {
+  	border-bottom: 2px solid green !important;
+		color: green;
+		~ .form-input-error-text {
+			display: none;
+		}
+  }
+	// No Spin Button on Number fields
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+	    -webkit-appearance: none;
+	    margin: 0;
+	}
+	.form-input-error-text {
+		padding: 3px;
+		font-size: 0.7em;
+		color: $error-red;
+		text-align: center;
+	}
+  .form-input-error {
+  	border-bottom: 2px solid $error-red !important;
+  }
+  .input-error-text {
+  	text-align: center;
+  	font-size: 0.8em;
+  	color: $error-red;
+  }
+  input {
+    font-size: 1.2em;
+  	width: 100%;
+  	height: 40px;
+  	padding: 2px;
+  	padding-left: 10px;
+  	margin-bottom: 5px;
+  	border: none;
+  	border-bottom: 2px solid $light-gray;
+  	outline: none;
+  	transition: border-bottom 0.5s ease-in;
+  	&:focus {
+  		border-bottom: 2px solid $primary-blue;
+  	}
+  }
+}
