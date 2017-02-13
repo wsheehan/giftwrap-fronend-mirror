@@ -1,12 +1,12 @@
 <header id="main-header" class="mat-box-soft-shadow">
 	<div>
-		<h1 {{action "goToRoot"}}>Giftwrap</h1>
+		<img {{action "goToRoot"}} src="https://storage.googleapis.com/giftwrap-media/banner_logo.png" id="banner-logo">
 	</div>
 
   {{#if user}}
     <div id="main-header-links">
       <h4>
-        {{#link-to "users.show" user.id}}<span class="glyphicon glyphicon-user"></span>&nbsp; {{user.firstName}} {{user.lastName}}{{/link-to}}
+        {{#link-to "users.show" user.id}}<img src="{{user.avatarUrl}}"> {{user.firstName}} {{user.lastName}}{{/link-to}}
         {{!-- <a href="#" {{action "logout"}}>Logout</a> --}}
       </h4>
     </div>

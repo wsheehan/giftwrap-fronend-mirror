@@ -11,15 +11,19 @@
 	padding: 10px 20px;
   background-color: #fff;
 	border-bottom: 1px solid $border-grey;
-	h1 {
-		margin: 0;
-		color: $navy-blue;
-		font-size: 3em;
-    cursor: pointer;
-	}
+  #banner-logo {
+    height: 100%;
+  }
 	a {
 		padding: 10px 5px;
 	}
+  #main-header-links {
+    img {
+      height: 40px;
+      width: 40px;
+      border-radius: 20px;
+    }
+  }
   @media (max-width: 900px) {
     #main-header-links {
       display: none;
