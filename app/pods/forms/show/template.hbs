@@ -37,42 +37,12 @@
 		</div>
 	{{else}}
 		<div id="inputs-wrapper">
-			<div class="mat-input-group">
-				{{input id="donor-email" class="mat-input mat-input-valid" value=newDonor.email required="required"}}
-				<label for="donor-email" class="form-input-label">Email</label>
-				<div id="donor-email-error" class="mat-input-error"></div>
-			</div>
-			<div class="mat-input-group">
-				{{input id="donor-first-name" type="text" class="mat-input mat-input-valid" value=newDonor.firstName required="required"}}
-				<label for="donor-first-name" class="form-input-label">First Name</label>
-				<div id="donor-first-name-error" class="mat-input-error"></div>
-			</div>
-			<div class="mat-input-group">
-				{{input id="donor-last-name" type="text" class="mat-input mat-input-valid" value=newDonor.lastName required="required"}}
-				<label for="donor-last-name" class="form-input-label">Last Name</label>
-				<div id="donor-last-name-error" class="mat-input-error"></div>
-			</div>
-			<div class="mat-input-group">
-				{{input id="donor-phone-number" type="number" class="mat-input mat-input-valid" value=newDonor.phoneNumber required="required"}}
-				<label for="donor-phone-number" class="form-input-label">Cell Number</label>
-				<div id="donor-phone-number-error" class="mat-input-error"></div>
-			</div>
+			{{form-input required=true validation="email" setControllerProp=(action "setControllerProp") prop="newDonor.email" inputId="donor-email" text="Email" type="email"}}
+			{{form-input required=true validation="blank" setControllerProp=(action "setControllerProp") prop="newDonor.firstName" inputId="donor-first-name" text="First Name"}}
+			{{form-input required=true validation="blank" setControllerProp=(action "setControllerProp") prop="newDonor.lastName" inputId="donor-last-name" text="Last Name"}}
+			{{form-input required=true validation="tel" setControllerProp=(action "setControllerProp") prop="newDonor.phoneNumber" inputId="donor-phone-number" text="Cell Number"}}
 		</div>
 	{{/if}}
-
-	{{!-- <p id="gift-type-link">Is this a pledge or pledge payment?</p>
-	<div id="gift-type">
-		<div class="first-radio">
-			{{input type="radio" value=model.giftType}}
-			<div>Gift</div>
-		</div><div>
-			<input type="radio" name="gift[gift_type]" value="pledge" id="gift_type_pledge">
-			<div>Pledge</div>
-		</div><div>
-			<input type="radio" name="gift[gift_type]" value="pledge_payment">
-			<div>Pledge Payment</div>
-		</div>
-	</div> --}}
 
 	<div id="gift-total">
 		<div id="how-much">

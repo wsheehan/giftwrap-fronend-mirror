@@ -5,6 +5,9 @@ export default Ember.Controller.extend({
 	k: null,
 
 	actions: {
+		setControllerProp(e, prop) {
+			this.set(prop, e);
+		},
 		setTotal(total, newGift) {
 			this.set("newGift.total", total);
 			Ember.$(".gift-total-box").removeClass("gift-total-selected");
