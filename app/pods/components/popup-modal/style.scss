@@ -1,0 +1,28 @@
+@import "app/styles/colors";
+
+.popup-modal {
+  position: fixed;
+  z-index: 1000000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.7);
+  text-align: center;
+}
+
+.modal-content {
+  display: inline-block;
+  background-color: #fefefe;
+  padding: 20px;
+  p {
+    font-size: 1.5em;
+  }
+  @media (min-width: 900px) {
+    margin: 15% auto;
+  }
+  .modal-error {
+    color: $error-red;
+  }
+}

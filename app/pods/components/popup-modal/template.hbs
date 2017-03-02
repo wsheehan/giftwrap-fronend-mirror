@@ -1,0 +1,12 @@
+<span class="modal-content">
+  <h2>{{success}}</h2>
+  {{#if successObject}}
+    <p>{{successObject.message}}</p>
+    <button type="button" class="mat-button-sm" {{action "goToDonor" successObject.donor.id}}>{{successObject.donor.firstName}} Profile</button>
+    <button type="button" class="mat-button-sm" {{action "reloadPage"}}>Create Another Donor</button>
+  {{else if failureObject}}
+    <p>{{failureObject.message}}</p>
+    <p class="modal-error">{{failureObject.error}}</p>
+    <button type="button" class="mat-button-sm" {{action "tryAgain"}}>Try Again</button>
+  {{/if}}
+</span>
