@@ -8,8 +8,9 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('donors', function() {
-  	this.route('index', { path: "/" });
+    this.route('index', { path: "/" });
     this.route('show', { path: "/:donor_id" });
+    this.route('new');
   });
 
   this.route('campaigns', function() {

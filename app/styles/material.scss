@@ -67,6 +67,10 @@
 	margin-top: 10px;
 	margin-bottom: 10px;
 	cursor: pointer;
+	transition: box-shadow 0.1s;
+	&:hover {
+		box-shadow: 0 5px 5px rgba(0,0,0,0.12), 0 5px 5px rgba(0,0,0,0.24);
+	}
 }
 
 .mat-button {

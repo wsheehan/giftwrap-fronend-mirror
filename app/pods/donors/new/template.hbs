@@ -1,0 +1,21 @@
+{{outlet}}
+
+<div class="new-donor-header">Enter Donor Information</div>
+
+<div class="new-donor-inputs-wrapper">
+  {{form-input required=true validation="blank" setControllerProp=(action "setControllerProp") prop="newDonor.firstName" inputId="donor-first-name" text="First Name"}}
+  {{form-input required=true validation="blank" setControllerProp=(action "setControllerProp") prop="newDonor.lastName" inputId="donor-last-name" text="Last Name"}}
+  {{form-input required=false validation="tel" setControllerProp=(action "setControllerProp") prop="newDonor.phoneNumber" inputId="donor-cell-number" text="Cell Number" type="tel"}}
+  {{form-input required=false validation="email" setControllerProp=(action "setControllerProp") prop="newDonor.email" inputId="donor-email" text="Email" type="email"}}
+  <div>
+    <input type="submit" value="Save Donor" class="mat-button" {{action "saveDonor" newDonor}}>
+  </div>
+</div>
+
+{{#if successObject}}
+  {{popup-modal success="Success!" successObject=successObject teardownModal=(action "teardownModal")}}
+{{/if}}
+
+{{#if failureObject}}
+  {{popup-modal success="failed creation" failureObject=failureObject teardownModal=(action "teardownModal")}}
+{{/if}}

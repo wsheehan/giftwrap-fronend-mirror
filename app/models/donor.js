@@ -11,6 +11,5 @@ export default Model.extend({
 	gifts: hasMany('gift'),
 	client_id: attr('string'),
 	affiliation: attr('string'),
-	classYear: attr('string'),
-	listLength: attr('string')
+	classYear: attr('string')
 });
